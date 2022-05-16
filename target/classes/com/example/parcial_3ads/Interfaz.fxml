@@ -20,13 +20,13 @@
          </font>
       </Text>
       <Line endX="463.0" layoutX="120.0" layoutY="78.0" startX="-105.0" />
-      <TextArea fx:id="textoResultados" layoutX="18.0" layoutY="607.0" prefHeight="199.0" prefWidth="569.0" />
+      <TextArea fx:id="textoResultados" layoutX="18.0" layoutY="607.0" prefHeight="199.0" prefWidth="569.0" style="-fx-background-color: gray;" />
       <Text fill="#8d0c0c" layoutX="53.0" layoutY="115.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Selecciona el archivo de Nomina:">
          <font>
             <Font name="Futura Medium" size="22.0" />
          </font>
       </Text>
-      <Button fx:id="botonSeleccionNomina" layoutX="420.0" layoutY="94.0" mnemonicParsing="false" text="Selecciona Aquí" />
+      <Button fx:id="botonSeleccionNomina" layoutX="405.0" layoutY="95.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="165.0" text="Selecciona Aquí" />
       <VBox layoutX="24.0" layoutY="146.0" prefHeight="250.0" prefWidth="215.0">
          <children>
             <Text fill="#8a0505" strokeType="OUTSIDE" strokeWidth="0.0" text="Asignar Materias:" textAlignment="CENTER" wrappingWidth="158.228515625">
@@ -103,7 +103,7 @@
             <Font name="Futura Medium" size="18.0" />
          </font>
       </Text>
-      <TextArea fx:id="textoNotificaciones" layoutX="16.0" layoutY="513.0" prefHeight="39.0" prefWidth="569.0" />
+      <TextArea fx:id="textoNotificaciones" layoutX="16.0" layoutY="513.0" prefHeight="39.0" prefWidth="569.0" style="-fx-background-color: gray;" />
       <Text fill="#8d0000" layoutX="18.0" layoutY="592.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Reporte:">
          <font>
             <Font name="Futura Medium" size="18.0" />
