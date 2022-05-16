@@ -57,6 +57,10 @@ public class ControladorParcial {
 
             System.out.println(rutaDelArchivo);
         }
+        else
+        {
+            System.out.println("Lo sentimos, no se ha podido abrir el archivo D:");
+        }
     }
 
 }
