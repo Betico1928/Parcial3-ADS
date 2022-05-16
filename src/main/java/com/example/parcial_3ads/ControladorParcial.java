@@ -4,6 +4,8 @@
 
 package com.example.parcial_3ads;
 
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
@@ -20,10 +22,10 @@ public class ControladorParcial {
     private Button botonSeleccionNomina; // Value injected by FXMLLoader
 
     @FXML // fx:id="comboAsignarHoras"
-    private ComboBox<?> comboAsignarHoras; // Value injected by FXMLLoader
+    private ComboBox<Double> comboAsignarHoras; // Value injected by FXMLLoader
 
     @FXML // fx:id="comboAsignarMateria"
-    private ComboBox<?> comboAsignarMateria; // Value injected by FXMLLoader
+    private ComboBox<String> comboAsignarMateria; // Value injected by FXMLLoader
 
     @FXML // fx:id="radioSeleccionMonitor"
     private RadioButton radioSeleccionMonitor; // Value injected by FXMLLoader
@@ -43,6 +45,7 @@ public class ControladorParcial {
     @FXML
     void tomarPathDeArchivo(ActionEvent event)
     {
+        // Apertura del Archivo Nomina
         String rutaDelArchivo;
 
         FileChooser SeleccionadorArchivo = new FileChooser();
