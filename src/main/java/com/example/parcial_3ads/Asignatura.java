@@ -19,16 +19,36 @@ public class Asignatura {
     // Atributos de instancia.
     private String id = new String() ;
     private String nombre = new String() ;
+    private double horas ;
     
     /*
         CONSTRUCTORES.
     */
     
     // Constructor de 'Asignatura' (con todos sus datos solicitados).
+    Asignatura ( String id,String nombre,double horas ) {
+        
+        this.id = id ;
+        this.nombre = nombre ;
+        this.horas = horas ;
+        
+        Asignatura.cantidadAsignaturas++ ;
+        
+    }
+    // Constructor de 'Asignatura' (con algunos datos).
     Asignatura ( String id,String nombre ) {
         
         this.id = id ;
         this.nombre = nombre ;
+        
+        Asignatura.cantidadAsignaturas++ ;
+        
+    }
+    // Constructor de 'Asignatura' (con otros datos).
+    Asignatura ( String nombre, double horas ) {
+        
+        this.nombre = nombre ;
+        this.horas = horas ;
         
         Asignatura.cantidadAsignaturas++ ;
         
@@ -62,6 +82,13 @@ public class Asignatura {
     public void setId ( String id ) {
         this.id = id ;
     }
+    // ... para el atributo 'horas'.
+    public double getHoras () {
+        return this.horas;
+    }
+    public void setId ( double horas ) {
+        this.horas = horas ;
+    }
     
     
     /*
@@ -73,8 +100,9 @@ public class Asignatura {
     public String toString() {
         return "\n\n" +
             "Asignatura " + "{\n" +
-                "\tnombre: " + nombre + ",\n" +
-                "\tid: " + id + ",\n" +
+                "\tnombre: " + this.nombre + ",\n" +
+                "\tid: " + this.id + ",\n" +
+                "\thoras: " + this.horas + "\n" +
             "}" +
         "\n\n";
     }
@@ -83,6 +111,6 @@ public class Asignatura {
     /*
         MÉTODOS DE CLASE.
     */
-    
+        
     
 }

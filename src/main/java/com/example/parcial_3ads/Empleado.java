@@ -2,7 +2,7 @@
 package com.mycompany.parcial_3;
 
 
-// imports
+import java.util.ArrayList;
 
 
 
@@ -24,7 +24,8 @@ public class Empleado {
     private String cargo = new String() ;
     private Integer numeroSalarios ;
     private double valorHoraTrabajada ;
-    /* ¿Empleado tiene lista de tipo 'Asignatura'? */
+    private Integer escalafon ;
+    private ArrayList <Asignatura> listaAsignaturas ;
     
     
     /*
@@ -32,7 +33,7 @@ public class Empleado {
     */
     
     // Constructor de 'Empleado' (con todos sus datos solicitados).
-    Empleado ( String nombre,String id,String dependencia,String cargo,Integer numeroSalarios,double valorHoraTrabajada ) {
+    Empleado ( String nombre,String id,String dependencia,String cargo,Integer numeroSalarios,double valorHoraTrabajada,int escalafon ) {
 
         this.nombre = nombre ;
         this.id = id ;
@@ -40,6 +41,44 @@ public class Empleado {
         this.cargo = cargo ;
         this.numeroSalarios = numeroSalarios ;
         this.valorHoraTrabajada = valorHoraTrabajada ;
+        this.escalafon = escalafon ;
+        this.listaAsignaturas = new ArrayList <> () ;
+        
+        Empleado.cantidadEmpleados++ ;
+
+    }
+    // Constructor de 'Empleado' (con los datos necesarios).
+    Empleado ( String nombre,String id,String cargo ) {
+
+        this.nombre = nombre ;
+        this.id = id ;
+        this.cargo = cargo ;
+        this.listaAsignaturas = new ArrayList <> () ;
+        
+        Empleado.cantidadEmpleados++ ;
+
+    }
+    // Constructor de 'Empleado' (con otros datos).
+    Empleado ( String nombre,String id,String dependencia,String cargo ) {
+
+        this.nombre = nombre ;
+        this.id = id ;
+        this.dependencia = dependencia ;
+        this.cargo = cargo ;
+        this.listaAsignaturas = new ArrayList <> () ;
+        
+        Empleado.cantidadEmpleados++ ;
+
+    }
+    // Constructor de 'Empleado' (con otros datos).
+    Empleado ( String nombre,String id,String dependencia,String cargo,int escalafon ) {
+
+        this.nombre = nombre ;
+        this.id = id ;
+        this.dependencia = dependencia ;
+        this.cargo = cargo ;
+        this.escalafon = escalafon ;
+        this.listaAsignaturas = new ArrayList <> () ;
         
         Empleado.cantidadEmpleados++ ;
 
@@ -118,6 +157,33 @@ public class Empleado {
     public void setValorHoraTrabajada ( double valorHoraTrabajada ) {
         this.valorHoraTrabajada = valorHoraTrabajada ;
     }
+    // ... para el atributo 'escalafon'.
+    public Integer getEscalafon_Integer ( ) {
+        return this.escalafon ;
+    }
+    public String getEscalafon_String ( ) {
+        return Integer.toString(this.escalafon);
+    }
+    public void setEscalafon ( Integer escalafon ) {
+        this.escalafon = escalafon ;
+    }
+    // ... para el atributo 'listaAsignaturas'.
+    public String getListaAsignaturas ( ) {
+        
+        String getListaAsignaturas = new String () ;
+        
+        for ( Asignatura i : this.listaAsignaturas ) {
+            getListaAsignaturas += i.toString() ;
+        }
+        
+    return getListaAsignaturas ;
+    }
+    public String getAsignaturaDeLista ( int indice ) {
+        return this.listaAsignaturas.get(indice).toString() ;
+    }
+    public ArrayList <Asignatura> getAsignaturas_ListaCompleta ( ) {
+        return this.listaAsignaturas ;
+    }
     
     
     /*
@@ -129,12 +195,13 @@ public class Empleado {
     public String toString() {
         return "\n\n" +
             "Empleado " + "{\n" +
-                "\tnombre: " + nombre + ",\n" +
-                "\tid: " + id + ",\n" +
-                "\tdependencia: " + dependencia + ",\n" +
-                "\tcargo: " + cargo + ",\n" +
-                "\tnumeroSalarios: " + numeroSalarios + ",\n" +
-                "\tvalorHoraTrabajada: " + valorHoraTrabajada + ",\n" +
+                "\tnombre: " + this.nombre + ",\n" +
+                "\tid: " + this.id + ",\n" +
+                "\tdependencia: " + this.dependencia + ",\n" +
+                "\tcargo: " + this.cargo + ",\n" +
+                "\tnumeroSalarios: " + this.numeroSalarios + ",\n" +
+                "\tvalorHoraTrabajada: " + this.valorHoraTrabajada + ",\n" +
+                "\tescalafon: " + this.escalafon + "\n" +
             "}" +
         "\n\n";
     }
