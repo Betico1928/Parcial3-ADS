@@ -79,14 +79,31 @@ public class ControladorParcial
     @FXML
     void inscribirMateria (ActionEvent event)
     {
+        String tipoEmpleado = null;
+
         System.out.println("buenas tardes");
 
-        seleccionarTipoEmpleado(event);
+        tipoEmpleado = seleccionarTipoEmpleado(event);
+
+        System.out.println(tipoEmpleado);
     }
 
     @FXML
-    void seleccionarTipoEmpleado (ActionEvent event)
+    String seleccionarTipoEmpleado (ActionEvent event)
     {
-        System.out.println("hola jajajaja");
+        String tipoEmpleado = null;
+
+        if (radioSeleccionProfesor.isSelected())
+        {
+            tipoEmpleado = "Profesor";
+        }
+
+        else if (radioSeleccionMonitor.isSelected())
+        {
+            tipoEmpleado = "Monitor";
+        }
+        return tipoEmpleado;
     }
+
+
 }
