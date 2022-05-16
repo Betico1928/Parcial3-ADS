@@ -6,10 +6,10 @@ package com.example.parcial_3ads;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.scene.control.Button;
-import javafx.scene.control.ComboBox;
-import javafx.scene.control.RadioButton;
-import javafx.scene.control.TextArea;
+import javafx.scene.control.*;
+import javafx.stage.FileChooser;
+
+import java.io.File;
 
 public class ControladorParcial {
 
@@ -38,8 +38,25 @@ public class ControladorParcial {
     private TextArea textoResultados; // Value injected by FXMLLoader
 
     @FXML
-    void tomarPathDeArchivo(ActionEvent event) {
+    private Label AbsolutePathNomina;
 
+    @FXML
+    void tomarPathDeArchivo(ActionEvent event)
+    {
+        String rutaDelArchivo;
+
+        FileChooser SeleccionadorArchivo = new FileChooser();
+        SeleccionadorArchivo.setTitle("Tomar el path absoluto");
+
+        File archivoSeleccionado = SeleccionadorArchivo.showOpenDialog(null);
+
+        if (archivoSeleccionado != null) {
+            AbsolutePathNomina.setText(archivoSeleccionado.getAbsolutePath());
+
+            rutaDelArchivo = AbsolutePathNomina.getText();
+
+            System.out.println(rutaDelArchivo);
+        }
     }
 
 }
