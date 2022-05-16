@@ -13,8 +13,8 @@ public class AplicacionParcial extends Application
     public void start(Stage stage) throws IOException
     {
         FXMLLoader fxmlLoader = new FXMLLoader(AplicacionParcial.class.getResource("Interfaz.fxml"));
-        Scene scene = new Scene(fxmlLoader.load(), 320, 240);
-        stage.setTitle("Hello!");
+        Scene scene = new Scene(fxmlLoader.load());
+        stage.setTitle("Parcial 3 (Te amo Angela!)");
         stage.setScene(scene);
         stage.show();
     }
