@@ -4,6 +4,7 @@
 
 package com.example.parcial_3ads;
 
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
@@ -35,5 +36,10 @@ public class ControladorParcial {
 
     @FXML // fx:id="textoResultados"
     private TextArea textoResultados; // Value injected by FXMLLoader
+
+    @FXML
+    void tomarPathDeArchivo(ActionEvent event) {
+
+    }
 
 }
