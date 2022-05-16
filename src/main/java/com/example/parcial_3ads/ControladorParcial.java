@@ -72,7 +72,7 @@ public class ControladorParcial
         comboAsignarMateria.setItems(listaDeMaterias);
 
         // Ingresar los datos en el ComboBox de Materias
-        ObservableList<String> listaDeHoras = FXCollections.observableArrayList("1", "2", "3", "4");
+        ObservableList<String> listaDeHoras = FXCollections.observableArrayList("1", "2", "3", "4", "5", "6", "7");
         comboAsignarHoras.setItems(listaDeHoras);
     }
 
@@ -81,11 +81,19 @@ public class ControladorParcial
     {
         String tipoEmpleado = null;
 
-        System.out.println("buenas tardes");
+        // Para obtener la materia seleccionada en el combobox de AsignarMateria
+        String seleccionMaterias = comboAsignarMateria.getSelectionModel().getSelectedItem().toString();
 
+        // Para obtener el numero de horas seleccionadas en el combobox de AsignarHoras
+        String seleccionHoras = comboAsignarHoras.getSelectionModel().getSelectedItem().toString();
+
+        // Para obtener el tipo de empleado al cual se le va a incribir la materia
         tipoEmpleado = seleccionarTipoEmpleado(event);
 
-        System.out.println(tipoEmpleado);
+        // Impresion de todos los datos obtenidos:
+        System.out.println("La materia seleccionada es: " + seleccionMaterias + "\n");
+        System.out.println("La cantidad de horas que se van a inscribir es de: " + seleccionHoras+ "\n");
+        System.out.println("El tipo de empleado es: " + tipoEmpleado+ "\n");
     }
 
     @FXML
