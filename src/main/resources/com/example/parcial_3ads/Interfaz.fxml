@@ -7,6 +7,7 @@
 <?import javafx.scene.control.RadioButton?>
 <?import javafx.scene.control.TextArea?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.ToggleGroup?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.shape.Line?>
@@ -67,15 +68,24 @@
                   <Insets bottom="5.0" />
                </VBox.margin>
             </Text>
-            <RadioButton fx:id="radioSeleccionProfesor" mnemonicParsing="false" text="Profesor">
+            <RadioButton fx:id="radioSeleccionProfesor" mnemonicParsing="false" onAction="#seleccionarTipoEmpleado" text="Profesor">
                <VBox.margin>
                   <Insets bottom="3.0" />
                </VBox.margin>
+               <font>
+                  <Font name="Futura Medium" size="13.0" />
+               </font>
+               <toggleGroup>
+                  <ToggleGroup fx:id="seleccionEmpleado" />
+               </toggleGroup>
             </RadioButton>
-            <RadioButton fx:id="radioSeleccionMonitor" mnemonicParsing="false" text="Monitor">
+            <RadioButton fx:id="radioSeleccionMonitor" mnemonicParsing="false" onAction="#seleccionarTipoEmpleado" text="Monitor" toggleGroup="$seleccionEmpleado">
                <VBox.margin>
                   <Insets bottom="15.0" />
                </VBox.margin>
+               <font>
+                  <Font name="Futura Medium" size="13.0" />
+               </font>
             </RadioButton>
             <Text fill="#830000" layoutX="10.0" layoutY="145.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Escriba el nombre del profesor:" textAlignment="CENTER">
                <font>
@@ -87,7 +97,7 @@
                   <Insets top="10.0" />
                </VBox.margin>
             </TextField>
-            <Button fx:id="botonInscribirMateria" mnemonicParsing="false" text="Inscribir Materia" textFill="#14a800">
+            <Button fx:id="botonInscribirMateria" mnemonicParsing="false" onAction="#inscribirMateria" text="Inscribir Materia" textFill="#14a800">
                <font>
                   <Font name="Futura Medium" size="16.0" />
                </font>

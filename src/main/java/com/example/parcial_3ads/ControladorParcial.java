@@ -44,6 +44,7 @@ public class ControladorParcial
     @FXML
     private Label AbsolutePathNomina;
 
+
     @FXML
     void tomarPathDeArchivo(ActionEvent event)
     {
@@ -75,4 +76,17 @@ public class ControladorParcial
         comboAsignarHoras.setItems(listaDeHoras);
     }
 
+    @FXML
+    void inscribirMateria (ActionEvent event)
+    {
+        System.out.println("buenas tardes");
+
+        seleccionarTipoEmpleado(event);
+    }
+
+    @FXML
+    void seleccionarTipoEmpleado (ActionEvent event)
+    {
+        System.out.println("hola jajajaja");
+    }
 }
