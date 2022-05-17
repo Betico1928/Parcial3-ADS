@@ -198,8 +198,8 @@ public class Nomina {
             
             String[] aux = texto.split(",") ;
             
-            this.empleados.get(this.empleados.size()-1).getAsignaturas_ListaCompleta().add(new Asignatura (aux[0],aux[1])) ;
-            
+            this.empleados.get(this.empleados.size()-1).getAsignaturas_ListaCompleta().add(new Asignatura (aux[0],Double.valueOf(aux[1]))) ;
+                        
         } else if ( !(texto.contains("%")) && !(texto.contains(",")) ) {
             
             if ( texto.matches("[0-9]") ) {
@@ -216,6 +216,146 @@ public class Nomina {
             
         }
         
+        completarEscalafones () ;
+        
+    }
+    
+    public void completarEscalafones ( ) {
+        
+        for ( Empleado e : this.empleados ) {
+            
+            if ( e.getDependencia().equals("Catedra") ) {
+                e.setEscalafon(1);
+            } else if ( e.getDependencia().equals("Instructor") ) {
+                e.setEscalafon(2);
+            } else if ( e.getDependencia().equals("Asistente") ) {
+                e.setEscalafon(3);
+            } else if ( e.getDependencia().equals("Asociado") ) {
+                e.setEscalafon(4);
+            } else if ( e.getDependencia().equals("Titular") ) {
+                e.setEscalafon(5);
+            }
+            
+        }
+        
+    }
+    
+    public void asignatura_A_empleado ( String nombre_A,double horas_A,String id_E,String cargo_E ) {
+        
+        Asignatura nuevaAsignatura = new Asignatura (nombre_A,horas_A) ;
+        
+        for ( Empleado e : this.empleados ) {
+            
+            if ( e.getId().equals(id_E) && e.getCargo().equals(cargo_E) ) {
+                
+                e.getAsignaturas_ListaCompleta().add(nuevaAsignatura) ;
+                
+                System.out.println("La signatura " + nuevaAsignatura.toString() + " se ha aniadido al empleado " + e.toString() + ".") ;
+                
+            } else {
+                
+                System.out.println("La asignatura no fue aniadida.");
+                
+            }
+            
+        }
+        
+    }
+    
+    public String calcularSalario_Empleado ( String id ) {
+        
+        double resultado = 0.0d ;
+        
+        for ( Empleado e : this.empleados ) {
+            
+            if ( e.getId().equals(id) ) {
+                
+                try {
+                    
+                    double primer_double = Double.valueOf(e.getNumeroSalarios_Integer()) ;
+                    double segundo_double = Empleado.getSmlv_double();
+                    double tercer_double = 0.88d ;
+                    
+                    resultado = primer_double * segundo_double * tercer_double ;
+                    
+                } catch (Exception exception) {
+                    
+                    double segundo_double = Empleado.getSmlv_double();
+                    double tercer_double = 0.88d ;
+                    
+                    resultado = segundo_double * tercer_double ;
+                    
+                }
+                
+            }
+            
+        }
+        
+    return String.format("$%,.2f",resultado) ;
+    }
+    
+    public String calcularSalario_Empleado ( String nombre,String cargo ) {
+        
+        double resultado = 0.0d ;
+        
+        for ( Empleado e : this.empleados ) {
+            
+            if ( e.getNombre().equals(nombre) && e.getCargo().equals(cargo) && cargo.equals("Profesor") ) {
+                
+                try {
+                
+                    double primer_double = Double.valueOf(e.getEscalafon_Integer()) ;
+                    double segundo_double = Empleado.getSmlv_double() ;
+                    double tercer_double = 0.88d ;
+                    double cuarto_double = calcularHorasTotales(e.getId()) ;
+                
+                    resultado = primer_double * segundo_double * tercer_double * cuarto_double ;
+                
+                } catch (Exception exception) {
+                
+                    double segundo_double = Empleado.getSmlv_double() ;
+                    double tercer_double = 0.88d ;
+                    double cuarto_double = calcularHorasTotales(e.getId()) ;
+
+                    resultado = segundo_double * tercer_double * cuarto_double ;
+                
+                }
+                
+            }
+            
+            if ( e.getNombre().equals(nombre) && e.getCargo().equals(cargo) && cargo.equals("Monitor") ) {
+                
+                double primer_double = e.getValorHoraTrabajada_double() ;
+                double segundo_double = calcularHorasTotales(e.getId()) ;
+
+                resultado = primer_double * segundo_double ;
+                
+            }
+            
+        }
+        
+    return String.format("$%,.2f",resultado) ;
+    }
+    
+    public double calcularHorasTotales ( String id ) {
+        
+        double horasTotales = 0 ;
+        
+        for ( Empleado e : this.empleados ) {
+            
+            if ( e.getId().equals(id) ) {
+            
+                for ( Asignatura a : e.getAsignaturas_ListaCompleta() ) {
+
+                    horasTotales += a.getHoras();
+
+                }
+                
+            }
+            
+        }
+    
+    return horasTotales ;
     }
     
     

@@ -23,7 +23,7 @@ public class Empleado {
     private String dependencia = new String() ;
     private String cargo = new String() ;
     private Integer numeroSalarios ;
-    private double valorHoraTrabajada ;
+    private double valorHoraTrabajada = 10_000d ;
     private Integer escalafon ;
     private ArrayList <Asignatura> listaAsignaturas ;
     
