@@ -4,11 +4,14 @@
 
 package com.example.parcial_3ads;
 
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.scene.control.Button;
-import javafx.scene.control.ComboBox;
-import javafx.scene.control.RadioButton;
-import javafx.scene.control.TextArea;
+import javafx.scene.control.*;
+import javafx.stage.FileChooser;
+
+import java.io.File;
 
 public class ControladorParcial {
 
@@ -19,10 +22,10 @@ public class ControladorParcial {
     private Button botonSeleccionNomina; // Value injected by FXMLLoader
 
     @FXML // fx:id="comboAsignarHoras"
-    private ComboBox<?> comboAsignarHoras; // Value injected by FXMLLoader
+    private ComboBox<Double> comboAsignarHoras; // Value injected by FXMLLoader
 
     @FXML // fx:id="comboAsignarMateria"
-    private ComboBox<?> comboAsignarMateria; // Value injected by FXMLLoader
+    private ComboBox<String> comboAsignarMateria; // Value injected by FXMLLoader
 
     @FXML // fx:id="radioSeleccionMonitor"
     private RadioButton radioSeleccionMonitor; // Value injected by FXMLLoader
@@ -35,5 +38,32 @@ public class ControladorParcial {
 
     @FXML // fx:id="textoResultados"
     private TextArea textoResultados; // Value injected by FXMLLoader
+
+    @FXML
+    private Label AbsolutePathNomina;
+
+    @FXML
+    void tomarPathDeArchivo(ActionEvent event)
+    {
+        // Apertura del Archivo Nomina
+        String rutaDelArchivo;
+
+        FileChooser SeleccionadorArchivo = new FileChooser();
+        SeleccionadorArchivo.setTitle("Tomar el path absoluto");
+
+        File archivoSeleccionado = SeleccionadorArchivo.showOpenDialog(null);
+
+        if (archivoSeleccionado != null) {
+            AbsolutePathNomina.setText(archivoSeleccionado.getAbsolutePath());
+
+            rutaDelArchivo = AbsolutePathNomina.getText();
+
+            System.out.println(rutaDelArchivo);
+        }
+        else
+        {
+            System.out.println("Lo sentimos, no se ha podido abrir el archivo D:");
+        }
+    }
 
 }
