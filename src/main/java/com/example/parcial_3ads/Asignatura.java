@@ -10,16 +10,20 @@ public class Asignatura {
     
     
     /*
-        ATRIBUTOS.
+        ATRIBUTOS DE CLASE.
     */
     
-    // Atributo de clase.
     private static Integer cantidadAsignaturas = 0 ;
     
-    // Atributos de instancia.
+    
+    /*
+        ATRIBUTOS DE INSTANCIA.
+    */
+    
     private String id = new String() ;
     private String nombre = new String() ;
     private double horas ;
+    
     
     /*
         CONSTRUCTORES.
@@ -32,61 +36,75 @@ public class Asignatura {
         this.nombre = nombre ;
         this.horas = horas ;
         
-        Asignatura.cantidadAsignaturas++ ;
+        ++Asignatura.cantidadAsignaturas ;
         
     }
+    
     // Constructor de 'Asignatura' (con algunos datos).
     Asignatura ( String id,String nombre ) {
         
         this.id = id ;
         this.nombre = nombre ;
         
-        Asignatura.cantidadAsignaturas++ ;
+        ++Asignatura.cantidadAsignaturas ;
         
     }
+    
     // Constructor de 'Asignatura' (con otros datos).
     Asignatura ( String nombre, double horas ) {
         
         this.nombre = nombre ;
         this.horas = horas ;
         
-        Asignatura.cantidadAsignaturas++ ;
+        ++Asignatura.cantidadAsignaturas ;
         
     }
     
+    
     /*
-        MÉTODOS DE ENCAPSULAMIENTO.
+        MÉTODOS DE ENCAPSULAMIENTO PARA ATRIBUTOS DE CLASE ...
     */
     
-    // ... para el atributo de clase 'cantidadAsignaturas'.
+    // ... 'cantidadAsignaturas'.
     public static Integer getCantidadAsignaturas_Integer ( ) {
         return Asignatura.cantidadAsignaturas ;
     }
     public static String getCantidadAsignaturas_String ( ) {
         return Integer.toString(Asignatura.cantidadAsignaturas) ;
     }
-    public static void setCantidadAsignaturas_EliminarAsignatura ( ) {
-        Asignatura.cantidadAsignaturas--;
+    public static void setCantidadAsignaturas_EliminarAsignatura ( boolean bandera ) {
+        if ( bandera ) { --Asignatura.cantidadAsignaturas ; }
     }
-    // ... para el atributo 'nombre'.
+    
+    
+    /*
+        MÉTODOS DE ENCAPSULAMIENTO PARA ATRIBUTOS DE INSTANCIA ...
+    */
+    
+    // ... 'nombre'.
     public String getNombre ( ) {
         return this.nombre ;
     }
     public void setNombre ( String nombre ) {
         this.nombre = nombre ;
     }
-    // ... para el atributo 'id'.
+    
+    // ... 'id'.
     public String getId ( ) {
         return this.id ;
     }
     public void setId ( String id ) {
         this.id = id ;
     }
-    // ... para el atributo 'horas'.
-    public double getHoras () {
-        return this.horas;
+    
+    // ... 'horas'.
+    public double getHoras_double ( ) {
+        return this.horas ;
     }
-    public void setId ( double horas ) {
+    public String getHoras_String ( ) {
+        return Double.toString(this.horas) ;
+    }
+    public void setHoras ( double horas ) {
         this.horas = horas ;
     }
     
@@ -111,6 +129,15 @@ public class Asignatura {
     /*
         MÉTODOS DE CLASE.
     */
+    
+    // Sin métodos de clase.
+    
+    
+    /*
+        MÉTODOS DE INSTANCIA.
+    */
+    
+    // Sin métodos de instancia.
         
     
 }
