@@ -87,12 +87,12 @@
                   <Font name="Futura Medium" size="13.0" />
                </font>
             </RadioButton>
-            <Text fill="#830000" layoutX="10.0" layoutY="145.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Escriba el nombre del profesor:" textAlignment="CENTER">
+            <Text fill="#830000" layoutX="10.0" layoutY="145.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Escriba el ID del empleado:" textAlignment="CENTER">
                <font>
                   <Font name="Futura Medium" size="13.0" />
                </font>
             </Text>
-            <TextField prefHeight="25.0" prefWidth="215.0">
+            <TextField fx:id="textIDEmpleado" prefHeight="25.0" prefWidth="215.0">
                <VBox.margin>
                   <Insets top="10.0" />
                </VBox.margin>

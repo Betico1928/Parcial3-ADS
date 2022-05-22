@@ -6,21 +6,19 @@ import java.util.ArrayList;
 
 
 
-public class Nomina {
-    
-    
+public class Nomina
+{
     /*
         ATRIBUTOS DE CLASE.
     */
     
     private static Integer cantidadTotalEmpleados = 0 ;
-    
-    
+
     /*
         ATRIBUTOS DE INSTANCIA.
     */
     
-    private ArrayList <Empleado> empleados ;
+    private static ArrayList <Empleado> empleados ;
     
     
     /*
@@ -29,7 +27,7 @@ public class Nomina {
     
     // Constructor para la asignación de memoria del atributo de instancia 'empleados'.
     Nomina ( ) {
-        this.empleados = new ArrayList <> () ;
+        Nomina.empleados = new ArrayList <> () ;
     }
     
     
@@ -57,18 +55,20 @@ public class Nomina {
     */
     
     // ... 'empleados'.
-    public String getListaEmpleados ( ) {
-        
+    public String getListaEmpleados ( )
+    {
         String getListaEmpleados = new String ();
         
-        for ( Empleado i : this.empleados ) {
-            getListaEmpleados += i.toString() ;
+        for ( Empleado i : Nomina.empleados )
+        {
+            getListaEmpleados += i.toString();
         }
-        
+
     return getListaEmpleados ;
     }
+
     public ArrayList <Empleado> getEmpleados_ListaCompleta ( ) {
-        return this.empleados ;
+        return Nomina.empleados ;
     }
     // El método 'set' de la lista 'empleados' le corresponde a otro conjunto de métodos.
     
@@ -83,7 +83,7 @@ public class Nomina {
         
         String getListaEmpleados = new String ();
         
-        for ( Empleado i : this.empleados ) {
+        for ( Empleado i : Nomina.empleados ) {
             getListaEmpleados += i.toString();
         }
         
@@ -99,7 +99,7 @@ public class Nomina {
     
     public void aniadirEmpleado_ConObjetoEmpleado ( Empleado empleadoParaAniadir ) {
         
-        boolean bandera = this.empleados.add(empleadoParaAniadir) ;
+        boolean bandera = Nomina.empleados.add(empleadoParaAniadir) ;
         
         this.mensajeValidador___AniadirEmpleado( bandera ) ;
         Nomina.setCantidadTotalEmpleados_AdicionarEmpleado( bandera ) ;
@@ -110,19 +110,19 @@ public class Nomina {
         
         if ( cargo.equals("Profesor") ) {
             
-            boolean bandera = this.empleados.add( new Profesor (nombre,id,cargo) ) ;
+            boolean bandera = Nomina.empleados.add( new Profesor (nombre,id,cargo) ) ;
             this.mensajeValidador___AniadirEmpleado( bandera ) ;
             Nomina.setCantidadTotalEmpleados_AdicionarEmpleado( bandera ) ;
             
         } else if ( cargo.equals("Monitor") ) {
             
-            boolean bandera = this.empleados.add( new Monitor (nombre,id,cargo) ) ;
+            boolean bandera = Nomina.empleados.add( new Monitor (nombre,id,cargo) ) ;
             this.mensajeValidador___AniadirEmpleado( bandera ) ;
             Nomina.setCantidadTotalEmpleados_AdicionarEmpleado( bandera ) ;
             
         } else if ( cargo.equals("Empleado") ) {
             
-            boolean bandera = this.empleados.add( new Empleado (nombre,id,cargo) ) ;
+            boolean bandera = Nomina.empleados.add( new Empleado (nombre,id,cargo) ) ;
             this.mensajeValidador___AniadirEmpleado( bandera ) ;
             Nomina.setCantidadTotalEmpleados_AdicionarEmpleado( bandera ) ;
             
@@ -135,7 +135,7 @@ public class Nomina {
     
     public void eliminarEmpleado_ConObjetoEmpleado ( Empleado empleadoParaEliminar ) {
         
-        boolean bandera = this.empleados.remove(empleadoParaEliminar) ;
+        boolean bandera = Nomina.empleados.remove(empleadoParaEliminar) ;
         
         this.mensajeValidador___EliminarEmpleado( bandera ) ;
         Nomina.setCantidadTotalEmpleados_EliminarEmpleado( bandera );
@@ -154,12 +154,12 @@ public class Nomina {
         
         int indiceBorrado = -1 ;
         
-        for ( Empleado trabajador : this.empleados ) {
+        for ( Empleado trabajador : Nomina.empleados ) {
             
             if ( trabajador.getId().equals(id_E) ) {
             this.mensajeValidador___EncontrarEmpleado( trabajador.getId().equals(id_E),id_E );
                 
-                indiceBorrado = this.empleados.indexOf(trabajador) ;
+                indiceBorrado = Nomina.empleados.indexOf(trabajador) ;
                 break ;
                 
             }
@@ -168,7 +168,7 @@ public class Nomina {
         
         try {
             
-            Empleado trabajadorEliminado = this.empleados.remove(indiceBorrado) ;
+            Empleado trabajadorEliminado = Nomina.empleados.remove(indiceBorrado) ;
         
             boolean bandera = ( !trabajadorEliminado.toString().isEmpty() || trabajadorEliminado.toString().length() != 0 ) ;
 
@@ -199,7 +199,7 @@ public class Nomina {
     
     public void aniadirAsignatura_A_Empleado ( String nombre_A,double horas_A,String id_E ) {
                 
-        for ( Empleado trabajador : this.empleados ) {
+        for ( Empleado trabajador : Nomina.empleados ) {
             
             if ( id_E.equals(trabajador.getId()) ) {
             this.mensajeValidador___EncontrarEmpleado(id_E.equals(trabajador.getId()),id_E) ;
@@ -240,7 +240,7 @@ public class Nomina {
         
         double resultado = 0.0d ;
         
-        for ( Empleado trabajador : this.empleados ) {
+        for ( Empleado trabajador : Nomina.empleados ) {
             
             if ( trabajador.getId().equals(id) ) {
             this.mensajeValidador___EncontrarEmpleado(id.equals(trabajador.getId()),id) ;
@@ -286,7 +286,7 @@ public class Nomina {
         
         double horas = 0.0d ;
         
-        for ( Empleado trabajador : this.empleados ) {
+        for ( Empleado trabajador : Nomina.empleados ) {
             
             if ( trabajador.getId().equals(id) ) {
                 
