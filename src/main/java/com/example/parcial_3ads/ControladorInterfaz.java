@@ -64,7 +64,7 @@ public class ControladorInterfaz
 
             System.out.println(rutaDelArchivo);
 
-            Nomina nomina_01 = new Nomina ();
+            Nomina nomina_01 = new Nomina();
             ControladorArchivosNomina.leerNomina(nomina_01.getEmpleados_ListaCompleta(), rutaDelArchivo);
 
             // Imprimir el archivo
@@ -126,11 +126,8 @@ public class ControladorInterfaz
         System.out.println("El nombre del empleado es: " + idEmpleado);
 
         double seleccionHorasDouble = Double.parseDouble(seleccionHoras);
-
-
-
-
-        //aniadirAsignatura_A_Empleado(seleccionMaterias ,seleccionHorasDouble ,idEmpleado);
+        
+        Nomina.aniadirAsignatura_A_Empleado(seleccionMaterias ,seleccionHorasDouble ,idEmpleado);
     }
 
     @FXML
