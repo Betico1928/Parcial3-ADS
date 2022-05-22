@@ -25,7 +25,7 @@ public class ControladorParcial
 
     @FXML // fx:id="comboAsignarHoras"
     private ComboBox<String> comboAsignarHoras; // Value injected by FXMLLoader
-
+    
     @FXML // fx:id="comboAsignarMateria"
     private ComboBox<String> comboAsignarMateria; // Value injected by FXMLLoader
 
@@ -48,6 +48,7 @@ public class ControladorParcial
     @FXML
     void tomarPathDeArchivo(ActionEvent event)
     {
+        // Apertura del Archivo Nomina
         String rutaDelArchivo;
 
         FileChooser SeleccionadorArchivo = new FileChooser();
