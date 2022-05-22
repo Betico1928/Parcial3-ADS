@@ -13,7 +13,7 @@ public class main {
         
         Nomina nomina_01 = new Nomina () ;
         
-        ControladorArchivosNomina.leerNomina(nomina_01.getEmpleados_ListaCompleta(),"G:\\1. PCs\\1. inASUS_TUF\\1. Documents\\PUJ\\Java\\IV\\ADS\\Parcial_3\\Nomina.txt") ;
+        ControladorArchivosNomina.leerNomina(Nomina.getEmpleados_ListaCompleta(),"G:\\1. PCs\\1. inASUS_TUF\\1. Documents\\PUJ\\Java\\IV\\ADS\\Parcial_3\\Nomina.txt") ;
         
 //        for ( Empleado emp : nomina_01.getEmpleados_ListaCompleta() ) {
 //            
@@ -34,6 +34,10 @@ public class main {
 //            }
 //            
 //        }
+        
+//        System.out.println(Nomina.calcularSalario_Empleado("123"));
+//        Nomina.aniadirAsignatura_A_Empleado("ABC", 20,"123");
+//        System.out.println(Nomina.calcularSalario_Empleado("123"));
         
     }
 

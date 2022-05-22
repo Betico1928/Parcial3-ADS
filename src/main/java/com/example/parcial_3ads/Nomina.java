@@ -20,7 +20,7 @@ public class Nomina {
         ATRIBUTOS DE INSTANCIA.
     */
     
-    private ArrayList <Empleado> empleados ;
+    private static ArrayList <Empleado> empleados ;
     
     
     /*
@@ -29,7 +29,7 @@ public class Nomina {
     
     // Constructor para la asignación de memoria del atributo de instancia 'empleados'.
     Nomina ( ) {
-        this.empleados = new ArrayList <> () ;
+        Nomina.empleados = new ArrayList <> () ;
     }
     
     
@@ -61,14 +61,14 @@ public class Nomina {
         
         String getListaEmpleados = new String ();
         
-        for ( Empleado i : this.empleados ) {
+        for ( Empleado i : Nomina.empleados ) {
             getListaEmpleados += i.toString() ;
         }
         
     return getListaEmpleados ;
     }
-    public ArrayList <Empleado> getEmpleados_ListaCompleta ( ) {
-        return this.empleados ;
+    public static ArrayList <Empleado> getEmpleados_ListaCompleta ( ) {
+        return Nomina.empleados ;
     }
     // El método 'set' de la lista 'empleados' le corresponde a otro conjunto de métodos.
     
@@ -83,7 +83,7 @@ public class Nomina {
         
         String getListaEmpleados = new String ();
         
-        for ( Empleado i : this.empleados ) {
+        for ( Empleado i : Nomina.empleados ) {
             getListaEmpleados += i.toString();
         }
         
@@ -97,33 +97,33 @@ public class Nomina {
     
     // Métodos para añadir un empleado a la nómina.
     
-    public void aniadirEmpleado_ConObjetoEmpleado ( Empleado empleadoParaAniadir ) {
+    public static void aniadirEmpleado_ConObjetoEmpleado ( Empleado empleadoParaAniadir ) {
         
-        boolean bandera = this.empleados.add(empleadoParaAniadir) ;
+        boolean bandera = Nomina.empleados.add(empleadoParaAniadir) ;
         
-        this.mensajeValidador___AniadirEmpleado( bandera ) ;
+        Nomina.mensajeValidador___AniadirEmpleado( bandera ) ;
         Nomina.setCantidadTotalEmpleados_AdicionarEmpleado( bandera ) ;
         
     }
     
-    public void aniadirEmpleado_ConCredenciales ( String nombre,String id,String cargo ) {
+    public static void aniadirEmpleado_ConCredenciales ( String nombre,String id,String cargo ) {
         
         if ( cargo.equals("Profesor") ) {
             
-            boolean bandera = this.empleados.add( new Profesor (nombre,id,cargo) ) ;
-            this.mensajeValidador___AniadirEmpleado( bandera ) ;
+            boolean bandera = Nomina.empleados.add( new Profesor (nombre,id,cargo) ) ;
+            Nomina.mensajeValidador___AniadirEmpleado( bandera ) ;
             Nomina.setCantidadTotalEmpleados_AdicionarEmpleado( bandera ) ;
             
         } else if ( cargo.equals("Monitor") ) {
             
-            boolean bandera = this.empleados.add( new Monitor (nombre,id,cargo) ) ;
-            this.mensajeValidador___AniadirEmpleado( bandera ) ;
+            boolean bandera = Nomina.empleados.add( new Monitor (nombre,id,cargo) ) ;
+            Nomina.mensajeValidador___AniadirEmpleado( bandera ) ;
             Nomina.setCantidadTotalEmpleados_AdicionarEmpleado( bandera ) ;
             
         } else if ( cargo.equals("Empleado") ) {
             
-            boolean bandera = this.empleados.add( new Empleado (nombre,id,cargo) ) ;
-            this.mensajeValidador___AniadirEmpleado( bandera ) ;
+            boolean bandera = Nomina.empleados.add( new Empleado (nombre,id,cargo) ) ;
+            Nomina.mensajeValidador___AniadirEmpleado( bandera ) ;
             Nomina.setCantidadTotalEmpleados_AdicionarEmpleado( bandera ) ;
             
         }
@@ -133,11 +133,11 @@ public class Nomina {
     
     // Métodos para eliminar un empleado a la nómina.
     
-    public void eliminarEmpleado_ConObjetoEmpleado ( Empleado empleadoParaEliminar ) {
+    public static void eliminarEmpleado_ConObjetoEmpleado ( Empleado empleadoParaEliminar ) {
         
-        boolean bandera = this.empleados.remove(empleadoParaEliminar) ;
+        boolean bandera = Nomina.empleados.remove(empleadoParaEliminar) ;
         
-        this.mensajeValidador___EliminarEmpleado( bandera ) ;
+        Nomina.mensajeValidador___EliminarEmpleado( bandera ) ;
         Nomina.setCantidadTotalEmpleados_EliminarEmpleado( bandera );
         
         if ( empleadoParaEliminar instanceof Profesor ) {
@@ -150,16 +150,16 @@ public class Nomina {
         
     }
     
-    public void eliminarEmpleado_ConID ( String id_E ) {
+    public static void eliminarEmpleado_ConID ( String id_E ) {
         
         int indiceBorrado = -1 ;
         
-        for ( Empleado trabajador : this.empleados ) {
+        for ( Empleado trabajador : Nomina.empleados ) {
             
             if ( trabajador.getId().equals(id_E) ) {
-            this.mensajeValidador___EncontrarEmpleado( trabajador.getId().equals(id_E),id_E );
+            Nomina.mensajeValidador___EncontrarEmpleado( trabajador.getId().equals(id_E),id_E );
                 
-                indiceBorrado = this.empleados.indexOf(trabajador) ;
+                indiceBorrado = Nomina.empleados.indexOf(trabajador) ;
                 break ;
                 
             }
@@ -168,7 +168,7 @@ public class Nomina {
         
         try {
             
-            Empleado trabajadorEliminado = this.empleados.remove(indiceBorrado) ;
+            Empleado trabajadorEliminado = Nomina.empleados.remove(indiceBorrado) ;
         
             boolean bandera = ( !trabajadorEliminado.toString().isEmpty() || trabajadorEliminado.toString().length() != 0 ) ;
 
@@ -176,7 +176,7 @@ public class Nomina {
                 System.out.println ("Las credenciales del empleado recientemente eliminado son: " + trabajadorEliminado.toString()) ;
             }
 
-            this.mensajeValidador___EliminarEmpleado( bandera ) ;
+            Nomina.mensajeValidador___EliminarEmpleado( bandera ) ;
             Nomina.setCantidadTotalEmpleados_EliminarEmpleado( bandera ) ;
             
             if ( trabajadorEliminado instanceof Profesor ) {
@@ -197,19 +197,19 @@ public class Nomina {
     
     // Métodos para calcular datos de la nómina.
     
-    public void aniadirAsignatura_A_Empleado ( String nombre_A,double horas_A,String id_E ) {
+    public static void aniadirAsignatura_A_Empleado ( String nombre_A,double horas_A,String id_E ) {
                 
-        for ( Empleado trabajador : this.empleados ) {
+        for ( Empleado trabajador : Nomina.empleados ) {
             
             if ( id_E.equals(trabajador.getId()) ) {
-            this.mensajeValidador___EncontrarEmpleado(id_E.equals(trabajador.getId()),id_E) ;
+            Nomina.mensajeValidador___EncontrarEmpleado(id_E.equals(trabajador.getId()),id_E) ;
                 
                 if ( trabajador instanceof Profesor ) {
                     
                     Asignatura nuevaAsignatura = new Asignatura (nombre_A,horas_A) ;
                     
                     boolean bandera = ( (Profesor)trabajador ).getAsignaturas_ListaCompleta().add(nuevaAsignatura) ;
-                    this.mensajeValidador___aniadirAsignatura_A_Empleado ( bandera , nuevaAsignatura ) ;
+                    Nomina.mensajeValidador___aniadirAsignatura_A_Empleado ( bandera , nuevaAsignatura ) ;
                     
                     break;
                     
@@ -218,7 +218,7 @@ public class Nomina {
                     Asignatura nuevaAsignatura = new Asignatura (nombre_A,horas_A) ;
                     
                     boolean bandera = ( (Monitor)trabajador ).getAsignaturas_ListaCompleta().add(nuevaAsignatura) ;
-                    this.mensajeValidador___aniadirAsignatura_A_Empleado ( bandera , nuevaAsignatura ) ;
+                    Nomina.mensajeValidador___aniadirAsignatura_A_Empleado ( bandera , nuevaAsignatura ) ;
                     
                     break;
 
@@ -236,14 +236,14 @@ public class Nomina {
         
     }
     
-    public String calcularSalario_Empleado ( String id ) {
+    public static String calcularSalario_Empleado ( String id ) {
         
         double resultado = 0.0d ;
         
-        for ( Empleado trabajador : this.empleados ) {
+        for ( Empleado trabajador : Nomina.empleados ) {
             
             if ( trabajador.getId().equals(id) ) {
-            this.mensajeValidador___EncontrarEmpleado(id.equals(trabajador.getId()),id) ;
+            Nomina.mensajeValidador___EncontrarEmpleado(id.equals(trabajador.getId()),id) ;
                 
                 if ( trabajador instanceof Profesor ) {
                     
@@ -282,11 +282,11 @@ public class Nomina {
     return String.format("$%,.2f",resultado) ;
     }
     
-    public double calcularHorasTotales_Empleado ( String id ) {
+    public static double calcularHorasTotales_Empleado ( String id ) {
         
         double horas = 0.0d ;
         
-        for ( Empleado trabajador : this.empleados ) {
+        for ( Empleado trabajador : Nomina.empleados ) {
             
             if ( trabajador.getId().equals(id) ) {
                 
@@ -321,7 +321,7 @@ public class Nomina {
     
     // Mensajes validadores.
     
-    public void mensajeValidador___AniadirEmpleado ( boolean bandera ) {
+    public static void mensajeValidador___AniadirEmpleado ( boolean bandera ) {
         
         if ( bandera ) {
             System.out.println ("Empleado aniadido exitosamente.") ;
@@ -331,7 +331,7 @@ public class Nomina {
         
     }
     
-    public void mensajeValidador___EliminarEmpleado ( boolean bandera ) {
+    public static void mensajeValidador___EliminarEmpleado ( boolean bandera ) {
         
         if ( bandera ) {
             System.out.println ("Empleado eliminado satisfactoriamente.");
@@ -341,7 +341,7 @@ public class Nomina {
         
     }
     
-    public void mensajeValidador___EncontrarEmpleado ( boolean bandera , String id ) {
+    public static void mensajeValidador___EncontrarEmpleado ( boolean bandera , String id ) {
         
         if ( bandera ) {
             System.out.println ( "El empleado con el numero de identificacion " + id + " fue encontrado." ) ;
@@ -351,7 +351,7 @@ public class Nomina {
         
     }
     
-    public void mensajeValidador___aniadirAsignatura_A_Empleado ( boolean bandera , Asignatura materia ) {
+    public static void mensajeValidador___aniadirAsignatura_A_Empleado ( boolean bandera , Asignatura materia ) {
         
         if ( bandera ) {
             System.out.println("La materia," + materia.toString() + ", se ha aniadido exitosamente.");
