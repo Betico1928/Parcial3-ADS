@@ -1,5 +1,4 @@
-
-package com.mycompany.parcial_3;
+package com.example.parcial_3ads;
 
 
 // imports
@@ -13,7 +12,7 @@ public class main {
         
         Nomina nomina_01 = new Nomina () ;
         
-        ControladorArchivosNomina.leerNomina(nomina_01.getEmpleados_ListaCompleta(),"G:\\1. PCs\\1. inASUS_TUF\\1. Documents\\PUJ\\Java\\IV\\ADS\\Parcial_3\\Nomina.txt") ;
+        ControladorArchivosNomina.leerNomina(nomina_01.getEmpleados_ListaCompleta(),"G:\\1. PCs\\1. inASUS_TUF\\1. Documents\\PUJ\\Java\\IV\\ADS\\Parcial_3\\Nomina.txt");
         
 //        for ( Empleado emp : nomina_01.getEmpleados_ListaCompleta() ) {
 //            

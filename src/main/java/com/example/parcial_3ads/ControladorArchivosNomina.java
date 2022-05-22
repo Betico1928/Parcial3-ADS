@@ -1,5 +1,5 @@
 
-package com.mycompany.parcial_3;
+package com.example.parcial_3ads;
 
 
 import java.util.Scanner;
