@@ -9,12 +9,11 @@ import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
-import javafx.scene.control.skin.ComboBoxListViewSkin;
 import javafx.stage.FileChooser;
 
 import java.io.File;
 
-public class ControladorParcial
+public class ControladorInterfaz
 {
 
     @FXML // fx:id="botonInscribirMateria"
@@ -49,7 +48,7 @@ public class ControladorParcial
     void tomarPathDeArchivo(ActionEvent event)
     {
         // Apertura del Archivo Nomina
-        String rutaDelArchivo;
+        String rutaDelArchivo = null;
 
         FileChooser SeleccionadorArchivo = new FileChooser();
         SeleccionadorArchivo.setTitle("Tomar el path absoluto");
@@ -62,12 +61,39 @@ public class ControladorParcial
             rutaDelArchivo = AbsolutePathNomina.getText();
 
             System.out.println(rutaDelArchivo);
+
+            Nomina nomina_01 = new Nomina ();
+            ControladorArchivosNomina.leerNomina(nomina_01.getEmpleados_ListaCompleta(), rutaDelArchivo);
+
+            // Imprimir el archivo
+            for ( Empleado emp : nomina_01.getEmpleados_ListaCompleta() )
+            {
+                if ( emp instanceof Profesor )
+                {
+                    System.out.println(emp.toString() ) ;
+                    System.out.println(( (Profesor)emp ) . getListaAsignaturas() ) ;
+                }
+                else if ( emp instanceof Monitor )
+                {
+                    System.out.println(emp.toString() ) ;
+                    System.out.println(( (Monitor)emp ) . getListaAsignaturas() ) ;
+                }
+                else if ( emp instanceof Empleado )
+                {
+                    System.out.println( emp.toString() );
+                }
+            }
         }
         else
         {
             System.out.println("Lo sentimos, no se ha podido abrir el archivo D:");
         }
 
+
+
+
+
+/*
         // Ingresar los datos en el ComboBox de Materias
         ObservableList<String> listaDeMaterias = FXCollections.observableArrayList("Programacion Avanzada", "Comunicaciones y Redes", "Analisis y Diseño de Software", "Bases de Datos");
         comboAsignarMateria.setItems(listaDeMaterias);
@@ -75,6 +101,7 @@ public class ControladorParcial
         // Ingresar los datos en el ComboBox de Materias
         ObservableList<String> listaDeHoras = FXCollections.observableArrayList("1", "2", "3", "4", "5", "6", "7");
         comboAsignarHoras.setItems(listaDeHoras);
+*/
     }
 
     @FXML

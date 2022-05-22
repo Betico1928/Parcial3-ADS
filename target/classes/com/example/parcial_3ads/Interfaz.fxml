@@ -14,7 +14,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="853.0" prefWidth="600.0" style="-fx-background-color: beige; -fx-border-width: 3; -fx-border-color: black;" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.parcial_3ads.ControladorParcial">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="853.0" prefWidth="600.0" style="-fx-background-color: beige; -fx-border-width: 3; -fx-border-color: black;" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.parcial_3ads.ControladorInterfaz">
    <children>
       <Text fill="#002f68" layoutX="18.0" layoutY="57.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Interfaz de Empleado y Nomina" textAlignment="CENTER" wrappingWidth="564.0">
          <font>
