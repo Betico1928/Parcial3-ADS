@@ -90,10 +90,6 @@ public class ControladorInterfaz
         }
 
 
-
-
-
-/*
         // Ingresar los datos en el ComboBox de Materias
         ObservableList<String> listaDeMaterias = FXCollections.observableArrayList("Programacion Avanzada", "Comunicaciones y Redes", "Analisis y Diseño de Software", "Bases de Datos");
         comboAsignarMateria.setItems(listaDeMaterias);
@@ -101,7 +97,6 @@ public class ControladorInterfaz
         // Ingresar los datos en el ComboBox de Materias
         ObservableList<String> listaDeHoras = FXCollections.observableArrayList("1", "2", "3", "4", "5", "6", "7");
         comboAsignarHoras.setItems(listaDeHoras);
-*/
     }
 
     @FXML
