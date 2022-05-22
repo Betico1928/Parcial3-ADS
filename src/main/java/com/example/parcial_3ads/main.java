@@ -11,7 +11,7 @@ public class main {
 
     public static void main ( String args[] ) {
         
-        Nomina nomina_01 = new Nomina () ;
+//        Nomina nomina_01 = new Nomina () ;
         
         ControladorArchivosNomina.leerNomina(Nomina.getEmpleados_ListaCompleta(),"G:\\1. PCs\\1. inASUS_TUF\\1. Documents\\PUJ\\Java\\IV\\ADS\\Parcial_3\\Nomina.txt") ;
         
