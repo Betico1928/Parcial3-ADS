@@ -172,7 +172,7 @@ public class ControladorInterfaz
     @FXML
     void calcularSalarioProfesor(ActionEvent event)
     {
-        
+
     }
 
     @FXML

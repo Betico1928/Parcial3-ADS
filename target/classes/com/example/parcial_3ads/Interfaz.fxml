@@ -180,17 +180,17 @@
             <Insets bottom="15.0" />
          </opaqueInsets>
       </TextField>
-      <Button fx:id="calcularSalarioEmpleado" layoutX="507.0" layoutY="241.0" mnemonicParsing="false" onAction="#calcularSalario" text="Calcular" textFill="#002f68">
+      <Button fx:id="calcularSalarioEmpleado" layoutX="507.0" layoutY="241.0" mnemonicParsing="false" onAction="#calcularSalarioEmpleado" text="Calcular" textFill="#002f68">
          <font>
             <Font name="Futura Medium" size="13.0" />
          </font>
       </Button>
-      <Button fx:id="calcularSalrioProfesor" layoutX="507.0" layoutY="306.0" mnemonicParsing="false" onAction="#calcularSalario" text="Calcular" textFill="#002f68">
+      <Button fx:id="calcularSalarioProfesor" layoutX="507.0" layoutY="306.0" mnemonicParsing="false" onAction="#calcularSalarioProfesor" text="Calcular" textFill="#002f68">
          <font>
             <Font name="Futura Medium" size="13.0" />
          </font>
       </Button>
-      <Button fx:id="calcularSalarioMonitor" layoutX="507.0" layoutY="366.0" mnemonicParsing="false" onAction="#calcularSalario" text="Calcular" textFill="#002f68">
+      <Button fx:id="calcularSalarioMonitor" layoutX="507.0" layoutY="366.0" mnemonicParsing="false" onAction="#calcularSalarioMonitor" text="Calcular" textFill="#002f68">
          <font>
             <Font name="Futura Medium" size="13.0" />
          </font>
