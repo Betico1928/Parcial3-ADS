@@ -181,4 +181,17 @@ public class ControladorInterfaz
     {
 
     }
+
+    public String capturarExcepcion(Object probarObjeto)
+    {
+        try
+        {
+            return probarObjeto.toString();
+        }
+        catch (NullPointerException NullPointerException)
+        {
+            textoNotificaciones.setText("Los datos se han ingresado de forma incorrecta, intentelo nuevamente.");
+            return "Los datos se han ingresado de forma incorrecta, intentelo nuevamente.";
+        }
+    }
 }
