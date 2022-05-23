@@ -134,14 +134,11 @@ public class ControladorInterfaz
         System.out.println("El tipo de empleado es: " + tipoEmpleado);
         System.out.println("El ID del empleado es: " + idEmpleado);
 
-        // Convertir las horas a Double
-        double seleccionHorasDouble = Double.parseDouble(seleccionHoras);
-
         // Pasar toda la informacion al metodo de aniadirAsignatura_A_Empleado
-        Nomina.aniadirAsignatura_A_Empleado(seleccionMaterias ,seleccionHorasDouble ,idEmpleado);
+        Nomina.aniadirAsignatura_A_Empleado(seleccionMaterias ,Double.parseDouble(seleccionHoras) ,idEmpleado);
 
         // Imprimir la Notificacion
-        textoNotificaciones.setText("Se ha añadido la materia de " + seleccionMaterias + " al  " + tipoEmpleado + " con ID " + idEmpleado + " dando " + seleccionHoras + " horas.");
+        //textoNotificaciones.setText("Se ha añadido la materia de " + seleccionMaterias + " al  " + tipoEmpleado + " con ID " + idEmpleado + " dando " + seleccionHoras + " horas.");
     }
 
     @FXML
