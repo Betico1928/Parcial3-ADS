@@ -12,6 +12,7 @@ import javafx.scene.control.*;
 import javafx.stage.FileChooser;
 
 import java.io.File;
+import java.lang.reflect.InvocationTargetException;
 
 public class ControladorInterfaz
 {
@@ -110,25 +111,28 @@ public class ControladorInterfaz
     @FXML
     void inscribirMateria (ActionEvent event)
     {
-        String tipoEmpleado = "null";
+        String tipoEmpleado = null;
+        String seleccionMaterias = null;
+        String seleccionHoras = null;
+        String idEmpleado = null;
 
         // Para obtener la materia seleccionada en el combobox de AsignarMateria
-        String seleccionMaterias = comboAsignarMateria.getSelectionModel().getSelectedItem().toString();
+        seleccionMaterias = comboAsignarMateria.getSelectionModel().getSelectedItem().toString();
 
         // Para obtener el numero de horas seleccionadas en el combobox de AsignarHoras
-        String seleccionHoras = comboAsignarHoras.getSelectionModel().getSelectedItem().toString();
+        seleccionHoras = comboAsignarHoras.getSelectionModel().getSelectedItem().toString();
 
         // Para obtener el tipo de empleado al cual se le va a incribir la materia
         tipoEmpleado = seleccionarTipoEmpleado(event);
 
         // Para obetener el ID del empleado:
-        String idEmpleado = textIDEmpleado.getText();
+        idEmpleado = textIDEmpleado.getText();
 
         // Impresion de todos los datos obtenidos:
         System.out.println("La materia seleccionada es: " + seleccionMaterias);
         System.out.println("La cantidad de horas que se van a inscribir es de: " + seleccionHoras);
         System.out.println("El tipo de empleado es: " + tipoEmpleado);
-        System.out.println("El nombre del empleado es: " + idEmpleado);
+        System.out.println("El ID del empleado es: " + idEmpleado);
 
         // Convertir las horas a Double
         double seleccionHorasDouble = Double.parseDouble(seleccionHoras);
