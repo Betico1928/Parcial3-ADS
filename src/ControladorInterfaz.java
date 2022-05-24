@@ -24,6 +24,9 @@ public class ControladorInterfaz {
     @FXML // fx:id="botonSeleccionNomina"
     private Button botonSeleccionNomina; // Value injected by FXMLLoader
 
+    @FXML // fx:id="botonGenerarNomina"
+    private Button botonGenerarNomina; // Value injected by FXMLLoader
+
     @FXML // fx:id="comboAsignarHoras"
     private ComboBox<String> comboAsignarHoras; // Value injected by FXMLLoader
     
@@ -51,7 +54,7 @@ public class ControladorInterfaz {
     @FXML
     void tomarPathDeArchivo(ActionEvent event) {
         
-        // Apertura del Archivo Nomina
+        // Apertura del Archivo Nomina_BASE
         String rutaDelArchivo = null;
 
         FileChooser SeleccionadorArchivo = new FileChooser();
@@ -68,7 +71,7 @@ public class ControladorInterfaz {
 
 //            System.out.println(rutaDelArchivo);
             
-            ControladorArchivosNomina.leerNomina(Nomina.getEmpleados_ListaCompleta(), rutaDelArchivo);
+            ControladorArchivosNomina.leerNomina(Nomina_BASE.getEmpleados_ListaCompleta(), rutaDelArchivo);
 
             // Imprimir la nómina.
 //            for ( Empleado emp : nomina_01.getEmpleados_ListaCompleta() )
@@ -90,7 +93,7 @@ public class ControladorInterfaz {
 //            }
             
         } else {
-            System.out.println("Lo sentimos, no se ha podido abrir el archivo D:") ;
+            System.out.println("Lo sentimos, no se ha podido abrir el archivo.") ;
         }
 
 
@@ -111,17 +114,22 @@ public class ControladorInterfaz {
     @FXML
     void inscribirMateria (ActionEvent event) {
         
+        String tipoEmpleado = null;
+        String seleccionMaterias = null;
+        String seleccionHoras = null;
+        String idEmpleado = null;
+        
         // Para obtener la materia seleccionada en el combobox de AsignarMateria
-        String seleccionMaterias = comboAsignarMateria.getSelectionModel().getSelectedItem() ;
+        seleccionMaterias = comboAsignarMateria.getSelectionModel().getSelectedItem() ;
 
         // Para obtener el numero de horas seleccionadas en el combobox de AsignarHoras
-        String seleccionHoras = comboAsignarHoras.getSelectionModel().getSelectedItem() ;
+        seleccionHoras = comboAsignarHoras.getSelectionModel().getSelectedItem() ;
 
         // Para obtener el tipo de empleado al cual se le va a incribir la materia
-        String tipoEmpleado = seleccionarTipoEmpleado(event) ;
+        tipoEmpleado = seleccionarTipoEmpleado(event) ;
 
         //Para obetener el ID del empleado:
-        String idEmpleado = textIDEmpleado.getText() ;
+        idEmpleado = textIDEmpleado.getText() ;
 
         // Impresion de todos los datos obtenidos:
         System.out.println("La materia seleccionada es: " + seleccionMaterias) ;
@@ -129,9 +137,8 @@ public class ControladorInterfaz {
         System.out.println("El tipo de empleado es: " + tipoEmpleado) ;
         System.out.println("El nombre del empleado es: " + idEmpleado) ;
 
-        double seleccionHorasDouble = Double.parseDouble(seleccionHoras) ;
-        
-        Nomina.aniadirAsignatura_A_Empleado(seleccionMaterias ,seleccionHorasDouble ,idEmpleado) ;
+        // Pasar toda la informacion al metodo de aniadirAsignatura_A_Empleado
+        Nomina.aniadirAsignatura_A_Empleado(seleccionMaterias ,Double.parseDouble(seleccionHoras) ,idEmpleado);
         
     }
 
@@ -153,6 +160,43 @@ public class ControladorInterfaz {
         }
         
     return tipoEmpleado;
+    }
+
+    @FXML
+    void calcularSalarioEmpleado(ActionEvent event)
+    {
+
+    }
+
+    @FXML
+    void calcularSalarioMonitor(ActionEvent event)
+    {
+
+    }
+
+    @FXML
+    void calcularSalarioProfesor(ActionEvent event)
+    {
+
+    }
+
+    @FXML
+    void generarNomina(ActionEvent event)
+    {
+
+    }
+
+    public String capturarExcepcion(Object probarObjeto)
+    {
+        try
+        {
+            return probarObjeto.toString();
+        }
+        catch (NullPointerException NullPointerException)
+        {
+            textoNotificaciones.setText("Los datos se han ingresado de forma incorrecta, intentelo nuevamente.");
+            return "Los datos se han ingresado de forma incorrecta, intentelo nuevamente.";
+        }
     }
     
     
