@@ -1,5 +1,9 @@
+<<<<<<< Updated upstream:src/ControladorInterfaz.java
 
 package parcial_03_withfx;
+=======
+package com.example.parcial_3ads;
+>>>>>>> Stashed changes:src/main/java/com/example/parcial_3ads/ControladorInterfaz.java
 
 
 // Importaciones generales.
