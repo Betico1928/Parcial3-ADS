@@ -6,9 +6,8 @@ import java.util.ArrayList;
 
 
 
-public class Nomina {
-
-
+public class Nomina
+{
     /*
         ATRIBUTOS DE CLASE.
     */
@@ -20,7 +19,7 @@ public class Nomina {
         ATRIBUTOS DE INSTANCIA.
     */
 
-    private static ArrayList <Empleado> empleados ;
+    private static ArrayList <Empleado> empleados = new ArrayList<>();
 
 
     /*
@@ -28,9 +27,6 @@ public class Nomina {
     */
 
     // Constructor para la asignación de memoria del atributo de instancia 'empleados'.
-    Nomina ( ) {
-        Nomina.empleados = new ArrayList <> () ;
-    }
 
 
     /*

@@ -9,9 +9,8 @@ import java.util.ArrayList;
 
 
 
-public class ControladorArchivosNomina {
-    
-    
+public class ControladorArchivosNomina
+{
     /*
         ATRIBUTOS DE CLASE.
     */

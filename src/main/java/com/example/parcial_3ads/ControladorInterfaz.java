@@ -4,6 +4,11 @@
 
 package com.example.parcial_3ads;
 
+// Importaciones generales.
+import java.io.File;
+import java.util.Objects;
+
+// Importaciones específicas para JavaFX.
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -11,11 +16,10 @@ import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.stage.FileChooser;
 
-import java.io.File;
-import java.lang.reflect.InvocationTargetException;
 
-public class ControladorInterfaz
-{
+
+public class ControladorInterfaz {
+
 
     @FXML // fx:id="botonInscribirMateria"
     private Button botonInscribirMateria; // Value injected by FXMLLoader
@@ -28,7 +32,7 @@ public class ControladorInterfaz
 
     @FXML // fx:id="comboAsignarHoras"
     private ComboBox<String> comboAsignarHoras; // Value injected by FXMLLoader
-    
+
     @FXML // fx:id="comboAsignarMateria"
     private ComboBox<String> comboAsignarMateria; // Value injected by FXMLLoader
 
@@ -57,22 +61,24 @@ public class ControladorInterfaz
         String rutaDelArchivo = null;
 
         FileChooser SeleccionadorArchivo = new FileChooser();
+
         SeleccionadorArchivo.setTitle("Tomar el path absoluto");
 
         File archivoSeleccionado = SeleccionadorArchivo.showOpenDialog(null);
 
-        if (archivoSeleccionado != null) {
+        if (archivoSeleccionado != null)
+        {
+
             AbsolutePathNomina.setText(archivoSeleccionado.getAbsolutePath());
 
             rutaDelArchivo = AbsolutePathNomina.getText();
 
-            System.out.println(rutaDelArchivo);
 
-            Nomina nomina_01 = new Nomina();
-            ControladorArchivosNomina.leerNomina(nomina_01.getEmpleados_ListaCompleta(), rutaDelArchivo);
+            ControladorArchivosNomina.leerNomina(Nomina.getEmpleados_ListaCompleta(), rutaDelArchivo);
 
-            // Imprimir el archivo
-            for ( Empleado emp : nomina_01.getEmpleados_ListaCompleta() )
+
+            // Imprimir la nómina.
+            for ( Empleado emp : Nomina.getEmpleados_ListaCompleta() )
             {
                 if ( emp instanceof Profesor )
                 {
@@ -80,7 +86,7 @@ public class ControladorInterfaz
                     System.out.println(( (Profesor)emp ) . getListaAsignaturas() ) ;
                 }
                 else if ( emp instanceof Monitor )
-                {
+               {
                     System.out.println(emp.toString() ) ;
                     System.out.println(( (Monitor)emp ) . getListaAsignaturas() ) ;
                 }
@@ -89,72 +95,114 @@ public class ControladorInterfaz
                     System.out.println( emp.toString() );
                 }
             }
-        }
-        else
+
+        } else
         {
-            System.out.println("Lo sentimos, no se ha podido abrir el archivo D:");
+            System.out.println("Lo sentimos, no se ha podido abrir el archivo.") ;
         }
 
 
         // Ingresar los datos en el ComboBox de Materias
         ObservableList<String> listaDeMaterias = FXCollections.observableArrayList("Introduccion a la Programacion","Programacion Avanzada","Pensamiento Sistemico",
-                                                                                    "Comunicaciones y Redes","Analisis y Diseño de Software","Bases de Datos","Introduccion a la Ingenieria"
-                                                                                    ,"Seguridad de la Informacion","Gestion Financiera","CDIO","Arquitectura y Organizacion del Computador"
-                                                                                    ,"Sistemas Operativos","Sistemas Distribuidos","Desarrollo Web","Estructuras de Datos","Teoria de la Computacion");
-        comboAsignarMateria.setItems(listaDeMaterias);
+                                                                                        "Comunicaciones y Redes","Analisis y Diseño de Software","Bases de Datos","Introduccion a la Ingenieria"
+                                                                                        ,"Seguridad de la Informacion","Gestion Financiera","CDIO","Arquitectura y Organizacion del Computador"
+                                                                                        ,"Sistemas Operativos","Sistemas Distribuidos","Desarrollo Web","Estructuras de Datos","Teoria de la Computacion") ;
+
+        comboAsignarMateria.setItems(listaDeMaterias) ;
 
         // Ingresar los datos en el ComboBox de Materias
-        ObservableList<String> listaDeHoras = FXCollections.observableArrayList("1","2","3","4","5","6","7","8","9","10","11","12","13","14","15","16","17","18","19","20");
+        ObservableList<String> listaDeHoras = FXCollections.observableArrayList("1","2","3","4","5","6","7","8","9","10","11","12","13","14","15","16","17","18","19","20") ;
         comboAsignarHoras.setItems(listaDeHoras);
     }
 
     @FXML
     void inscribirMateria (ActionEvent event)
     {
+        // Variables de Recoleccion
         String tipoEmpleado = null;
         String seleccionMaterias = null;
         String seleccionHoras = null;
         String idEmpleado = null;
 
+        // Variables de Verificación
+        String verificarMateria;
+        String verificarHoras;
+        String verificarEmpleado;
+        String verificarId;
+
+
         // Para obtener la materia seleccionada en el combobox de AsignarMateria
-        seleccionMaterias = comboAsignarMateria.getSelectionModel().getSelectedItem().toString();
+        seleccionMaterias = comboAsignarMateria.getSelectionModel().getSelectedItem();
+        verificarMateria = seleccionMaterias;
 
         // Para obtener el numero de horas seleccionadas en el combobox de AsignarHoras
-        seleccionHoras = comboAsignarHoras.getSelectionModel().getSelectedItem().toString();
+        seleccionHoras = comboAsignarHoras.getSelectionModel().getSelectedItem() ;
+        verificarHoras = seleccionHoras;
 
         // Para obtener el tipo de empleado al cual se le va a incribir la materia
-        tipoEmpleado = seleccionarTipoEmpleado(event);
+        tipoEmpleado = seleccionarTipoEmpleado(event) ;
+        verificarEmpleado = tipoEmpleado;
 
-        // Para obetener el ID del empleado:
-        idEmpleado = textIDEmpleado.getText();
+        //Para obtener el ID del empleado:
+        idEmpleado = textIDEmpleado.getText() ;
+        verificarId = idEmpleado;
 
-        // Impresion de todos los datos obtenidos:
-        System.out.println("La materia seleccionada es: " + seleccionMaterias);
-        System.out.println("La cantidad de horas que se van a inscribir es de: " + seleccionHoras);
-        System.out.println("El tipo de empleado es: " + tipoEmpleado);
-        System.out.println("El ID del empleado es: " + idEmpleado);
+        // Metodos Comprobacion
+        verificarMateria = capturarExcepcion(seleccionMaterias);
+        verificarHoras  = capturarExcepcion(seleccionMaterias);
+        verificarEmpleado = capturarExcepcion(seleccionMaterias);
+        verificarId = capturarExcepcion(seleccionMaterias);
 
-        // Pasar toda la informacion al metodo de aniadirAsignatura_A_Empleado
-        Nomina.aniadirAsignatura_A_Empleado(seleccionMaterias ,Double.parseDouble(seleccionHoras) ,idEmpleado);
+        if (!Objects.equals(verificarMateria, "error") && !Objects.equals(verificarHoras, "error") && !Objects.equals(verificarEmpleado, "error") && !Objects.equals(verificarId, "error"))
+        {
+            System.out.println("Hola 2");
+            // Pasar toda la informacion al metodo de aniadirAsignatura_A_Empleado
+            Nomina.aniadirAsignatura_A_Empleado(seleccionMaterias ,Double.parseDouble(seleccionHoras) ,idEmpleado);
+            textoNotificaciones.setText("Se ha inscrito la materia exitosamente :D");
+        }
+        else
+        {
+            textoNotificaciones.setText("Los datos se han ingresado de forma incorrecta, intentelo nuevamente.");
+        }
 
-        // Imprimir la Notificacion
-        //textoNotificaciones.setText("Se ha añadido la materia de " + seleccionMaterias + " al  " + tipoEmpleado + " con ID " + idEmpleado + " dando " + seleccionHoras + " horas.");
+
+        // Imprimir la nómina.
+        for ( Empleado emp : Nomina.getEmpleados_ListaCompleta() )
+        {
+            if ( emp instanceof Profesor )
+            {
+                System.out.println(emp.toString() ) ;
+                System.out.println(( (Profesor)emp ) . getListaAsignaturas() ) ;
+            }
+            else if ( emp instanceof Monitor )
+            {
+                System.out.println(emp.toString() ) ;
+                System.out.println(( (Monitor)emp ) . getListaAsignaturas() ) ;
+            }
+            else if ( emp instanceof Empleado )
+            {
+                System.out.println( emp.toString() );
+            }
+        }
     }
 
     @FXML
-    String seleccionarTipoEmpleado (ActionEvent event)
-    {
-        String tipoEmpleado = null;
+    String seleccionarTipoEmpleado (ActionEvent event) {
 
-        if (radioSeleccionProfesor.isSelected())
-        {
-            tipoEmpleado = "Profesor";
+        String tipoEmpleado = null ;
+
+        if (radioSeleccionProfesor.isSelected()) {
+
+            tipoEmpleado = "Profesor" ;
+
         }
 
-        else if (radioSeleccionMonitor.isSelected())
-        {
-            tipoEmpleado = "Monitor";
+        else if (radioSeleccionMonitor.isSelected()) {
+
+            tipoEmpleado = "Monitor" ;
+
         }
+
         return tipoEmpleado;
     }
 
@@ -190,8 +238,8 @@ public class ControladorInterfaz
         }
         catch (NullPointerException NullPointerException)
         {
-            textoNotificaciones.setText("Los datos se han ingresado de forma incorrecta, intentelo nuevamente.");
-            return "Los datos se han ingresado de forma incorrecta, intentelo nuevamente.";
+            System.out.println("Los datos se han ingresado de forma incorrecta, intentelo nuevamente.");
+            return "error";
         }
     }
 }
