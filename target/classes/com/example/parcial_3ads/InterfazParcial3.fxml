@@ -95,7 +95,7 @@
                   <Insets top="5.0" />
                </VBox.margin>
             </Text>
-            <TextField fx:id="textIDEmpleado" prefHeight="25.0" prefWidth="215.0">
+            <TextField fx:id="textIDEmpleadoMaterias" prefHeight="25.0" prefWidth="215.0">
                <VBox.margin>
                   <Insets top="13.0" />
                </VBox.margin>

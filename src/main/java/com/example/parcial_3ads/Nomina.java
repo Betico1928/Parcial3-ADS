@@ -196,8 +196,10 @@ public class Nomina
     public static boolean aniadirAsignatura_A_Empleado ( String nombre_A,double horas_A, String tipo_E ,String id_E )
     {
         boolean idCorrecto = false;
+
         for ( Empleado trabajador : Nomina.empleados )
         {
+
             if (tipo_E.equals(trabajador.getCargo()) && id_E.equals(trabajador.getId()) )
             {
                 Nomina.mensajeValidador___EncontrarEmpleado(id_E.equals(trabajador.getId()),id_E) ;

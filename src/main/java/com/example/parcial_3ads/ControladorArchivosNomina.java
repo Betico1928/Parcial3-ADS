@@ -203,6 +203,55 @@ public class ControladorArchivosNomina
         modificadorDeArchivo.close();
     }
 
+    public static String presentarReporte (String pathDelArchivo) throws IOException
+    {
+        String mensajeVerificacion = "";
+        File archivo = new File(pathDelArchivo);
+
+        if(archivo.exists())
+        {
+            escribirReporte(pathDelArchivo);
+            mensajeVerificacion = "El archivo existe...";
+        }
+        else if (archivo.createNewFile())
+        {
+            escribirReporte(pathDelArchivo);
+            mensajeVerificacion = "El archivo fue creado";
+        }
+        else
+        {
+            escribirReporte(pathDelArchivo);
+            mensajeVerificacion = "No se ha encontrado el archivo para generar un reporte D:";
+        }
+        return mensajeVerificacion;
+    }
+
+    public static void escribirReporte(String pathDelArchivo) throws IOException
+    {
+        Writer modificadorDeArchivo = new FileWriter(pathDelArchivo, false);
+        String contenidoReporte = new String();
+
+        for (Empleado empleadoAniadido : Nomina.getEmpleados_ListaCompleta())
+        {
+            if (empleadoAniadido instanceof Profesor)
+            {
+                contenidoReporte += empleadoAniadido.getNombre() + " , " + empleadoAniadido.getId() + " , \\" + Nomina.calcularSalario_Empleado(empleadoAniadido.getNombre(), empleadoAniadido.getCargo());
+            }
+            else if (empleadoAniadido instanceof Monitor)
+            {
+                contenidoReporte += empleadoAniadido.getNombre() + " , " + empleadoAniadido.getId() + " , \\" + Nomina.calcularSalario_Empleado(empleadoAniadido.getNombre(), empleadoAniadido.getCargo());
+            }
+
+            else if (empleadoAniadido instanceof Empleado)
+            {
+                contenidoReporte += empleadoAniadido.getNombre() + " , " + empleadoAniadido.getId() + " , \\" + Nomina.calcularSalario_Empleado(empleadoAniadido.getNombre(), empleadoAniadido.getCargo());
+            }
+        }
+        modificadorDeArchivo.write(contenidoReporte);
+        modificadorDeArchivo.flush();
+        modificadorDeArchivo.close();
+    }
+
     /*
         MÉTODOS DE INSTANCIA.
     */

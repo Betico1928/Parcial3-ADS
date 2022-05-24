@@ -63,6 +63,9 @@ public class ControladorInterfaz {
     private TextField textIDProfesor;
 
     @FXML
+    private TextField textIDEmpleadoMaterias;
+
+    @FXML
     void tomarPathDeArchivo(ActionEvent event)
     {
         // Apertura del Archivo Nomina
@@ -142,19 +145,15 @@ public class ControladorInterfaz {
 
         // Para obtener la materia seleccionada en el combobox de AsignarMateria
         seleccionMaterias = comboAsignarMateria.getSelectionModel().getSelectedItem();
-        verificarMateria = seleccionMaterias;
 
         // Para obtener el numero de horas seleccionadas en el combobox de AsignarHoras
         seleccionHoras = comboAsignarHoras.getSelectionModel().getSelectedItem() ;
-        verificarHoras = seleccionHoras;
 
         // Para obtener el tipo de empleado al cual se le va a incribir la materia
         tipoEmpleado = seleccionarTipoEmpleado(event);
-        verificarEmpleado = tipoEmpleado;
 
         //Para obtener el ID del empleado:
-        idEmpleado = textIDEmpleado.getText() ;
-        verificarId = idEmpleado;
+        idEmpleado = textIDEmpleadoMaterias.getText();
 
         // Metodos Comprobacion
         verificarMateria = capturarExcepcion(seleccionMaterias);
@@ -170,11 +169,13 @@ public class ControladorInterfaz {
 
             if (idCorrecto)
             {
+                System.out.println("hola bien");
                 textoNotificaciones.setText("Se ha inscrito la materia exitosamente :D");
                 ControladorArchivosNomina.modificarNomina(pathDelArchivo);
             }
             else
             {
+                System.out.println("hola mal");
                 textoNotificaciones.setText("No se ha inscrito la materia exitosamente D:");
             }
         }
@@ -281,9 +282,10 @@ public class ControladorInterfaz {
     }
 
     @FXML
-    void generarNomina(ActionEvent event)
-    {
+    void generarNomina(ActionEvent event) throws IOException {
+        String mensajeVerificacion = null;
 
+        mensajeVerificacion = ControladorArchivosNomina.presentarReporte(pathDelArchivo);
     }
 
 
