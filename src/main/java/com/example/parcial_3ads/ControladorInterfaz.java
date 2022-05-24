@@ -1,5 +1,5 @@
 /**
- * Sample Skeleton for 'Interfaz.fxml' Controller Class
+ * Sample Skeleton for 'InterfazParcial3.fxml' Controller Class
  */
 
 package com.example.parcial_3ads;

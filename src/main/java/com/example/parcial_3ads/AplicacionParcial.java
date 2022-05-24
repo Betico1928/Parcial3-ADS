@@ -24,9 +24,9 @@ public class AplicacionParcial extends Application
     @Override
     public void start(Stage stage) throws IOException
     {
-        FXMLLoader fxmlLoader = new FXMLLoader(AplicacionParcial.class.getResource("Interfaz.fxml"));
+        FXMLLoader fxmlLoader = new FXMLLoader(AplicacionParcial.class.getResource("InterfazParcial3.fxml"));
         Scene scene = new Scene(fxmlLoader.load());
-        stage.setTitle("Parcial 3 (Te amo Angela!)");
+        stage.setTitle("Parcial 3");
         stage.setScene(scene);
         stage.show();
     }
