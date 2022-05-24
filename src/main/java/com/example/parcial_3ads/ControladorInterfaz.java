@@ -282,10 +282,35 @@ public class ControladorInterfaz {
     }
 
     @FXML
-    void generarNomina(ActionEvent event) throws IOException {
+    void generarNomina(ActionEvent event) throws IOException
+    {
         String mensajeVerificacion = null;
+        String mostrarReporte = null;
 
-        mensajeVerificacion = ControladorArchivosNomina.presentarReporte(pathDelArchivo);
+        // Apertura del Archivo Reporte
+        String rutaDelArchivoReporte = null;
+        FileChooser SeleccionadorArchivoReporte = new FileChooser();
+
+        SeleccionadorArchivoReporte.setTitle("Tomar el path absoluto del reporte");
+
+        File archivoReporteSeleccionado = SeleccionadorArchivoReporte.showOpenDialog(null);
+
+        if (archivoReporteSeleccionado != null)
+        {
+            mensajeVerificacion = ControladorArchivosNomina.presentarReporte(rutaDelArchivoReporte);
+            System.out.println(rutaDelArchivoReporte);
+            textoNotificaciones.setText(rutaDelArchivoReporte);
+        }
+        else
+        {
+            mensajeVerificacion = ControladorArchivosNomina.presentarReporte("Reporte.txt");
+            System.out.println("Se ha creado el archivo.");
+            System.out.println(rutaDelArchivoReporte);
+            textoNotificaciones.setText(rutaDelArchivoReporte);
+        }
+
+        mostrarReporte = ControladorArchivosNomina.escribirReporte(pathDelArchivo);
+        textoResultados.setText(mostrarReporte);
     }
 
 

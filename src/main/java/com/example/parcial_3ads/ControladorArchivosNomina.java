@@ -226,7 +226,7 @@ public class ControladorArchivosNomina
         return mensajeVerificacion;
     }
 
-    public static void escribirReporte(String pathDelArchivo) throws IOException
+    public static String escribirReporte(String pathDelArchivo) throws IOException
     {
         Writer modificadorDeArchivo = new FileWriter(pathDelArchivo, false);
         String contenidoReporte = new String();
@@ -235,21 +235,22 @@ public class ControladorArchivosNomina
         {
             if (empleadoAniadido instanceof Profesor)
             {
-                contenidoReporte += empleadoAniadido.getNombre() + " , " + empleadoAniadido.getId() + " , \\" + Nomina.calcularSalario_Empleado(empleadoAniadido.getNombre(), empleadoAniadido.getCargo());
+                contenidoReporte += empleadoAniadido.getNombre() + " , " + empleadoAniadido.getId() + " , \\" + Nomina.calcularSalario_Empleado(empleadoAniadido.getNombre(), empleadoAniadido.getCargo()) + '\n';
             }
             else if (empleadoAniadido instanceof Monitor)
             {
-                contenidoReporte += empleadoAniadido.getNombre() + " , " + empleadoAniadido.getId() + " , \\" + Nomina.calcularSalario_Empleado(empleadoAniadido.getNombre(), empleadoAniadido.getCargo());
+                contenidoReporte += empleadoAniadido.getNombre() + " , " + empleadoAniadido.getId() + " , \\" + Nomina.calcularSalario_Empleado(empleadoAniadido.getNombre(), empleadoAniadido.getCargo()) + '\n';
             }
 
             else if (empleadoAniadido instanceof Empleado)
             {
-                contenidoReporte += empleadoAniadido.getNombre() + " , " + empleadoAniadido.getId() + " , \\" + Nomina.calcularSalario_Empleado(empleadoAniadido.getNombre(), empleadoAniadido.getCargo());
+                contenidoReporte += empleadoAniadido.getNombre() + " , " + empleadoAniadido.getId() + " , \\" + Nomina.calcularSalario_Empleado(empleadoAniadido.getNombre(), empleadoAniadido.getCargo()) + '\n';
             }
         }
         modificadorDeArchivo.write(contenidoReporte);
         modificadorDeArchivo.flush();
         modificadorDeArchivo.close();
+        return contenidoReporte;
     }
 
     /*
