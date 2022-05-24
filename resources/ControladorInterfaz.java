@@ -58,7 +58,7 @@ public class ControladorInterfaz {
     @FXML
     void tomarPathDeArchivo(ActionEvent event) {
         
-        // Apertura del Archivo Nomina_BASE
+        // Apertura del Archivo Nomina
         String rutaDelArchivo = null;
 
         FileChooser SeleccionadorArchivo = new FileChooser();
@@ -75,7 +75,7 @@ public class ControladorInterfaz {
 
 //            System.out.println(rutaDelArchivo);
             
-            ControladorArchivosNomina.leerNomina(Nomina_BASE.getEmpleados_ListaCompleta(), rutaDelArchivo);
+            ControladorArchivosNomina.leerNomina(Nomina.getEmpleados_ListaCompleta(), rutaDelArchivo);
 
             // Imprimir la nómina.
 //            for ( Empleado emp : nomina_01.getEmpleados_ListaCompleta() )
