@@ -235,12 +235,12 @@ public class Nomina
         return idCorrecto;
     }
 
-    public String calcularSalario_Empleado ( String nombre, String cargo )
+    public static String calcularSalario_Empleado ( String nombre, String cargo )
     {
         double resultado = 0.0d ;
 
-        for ( Empleado trabajador : Nomina.empleados ) {
-
+        for ( Empleado trabajador : Nomina.empleados )
+        {
             if ( trabajador.getNombre().equals(nombre) && trabajador.getCargo().equals(cargo) )
             {
                 Nomina.mensajeValidador___EncontrarEmpleado(trabajador.getNombre().equals(nombre) && trabajador.getCargo().equals(cargo), nombre, cargo) ;
@@ -249,7 +249,7 @@ public class Nomina
 
                     double primer_double = 0.88d ;
                     double segundo_double = Double.valueOf( ( (Profesor)trabajador ) . getNumeroSalarios_Integer() ) ;
-                    double tercer_double = calcularHorasTotales_Empleado(nombre, cargo) ;
+                    double tercer_double = Nomina.calcularHorasTotales_Empleado(nombre, cargo) ;
 
                     resultado = primer_double * segundo_double * tercer_double ;
 
@@ -257,7 +257,7 @@ public class Nomina
 
                 } else if ( trabajador instanceof Monitor ) {
 
-                    double primer_double = calcularHorasTotales_Empleado(nombre, cargo) ;
+                    double primer_double = Nomina.calcularHorasTotales_Empleado(nombre, cargo) ;
                     double segundo_double = ( (Monitor)trabajador ) . getValorHoraTrabajada_double() ;
 
                     resultado = primer_double * segundo_double ;
@@ -278,11 +278,10 @@ public class Nomina
             }
 
         }
-
         return String.format("$%,.2f",resultado) ;
     }
 
-    public double calcularHorasTotales_Empleado ( String nombre, String cargo )
+    public static double calcularHorasTotales_Empleado ( String nombre, String cargo )
     {
         double horas = 0.0d ;
 

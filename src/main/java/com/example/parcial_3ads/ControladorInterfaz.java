@@ -57,6 +57,12 @@ public class ControladorInterfaz {
     private TextField textIDEmpleado;
 
     @FXML
+    private TextField textIDMonitor;
+
+    @FXML
+    private TextField textIDProfesor;
+
+    @FXML
     void tomarPathDeArchivo(ActionEvent event)
     {
         // Apertura del Archivo Nomina
@@ -229,22 +235,49 @@ public class ControladorInterfaz {
         // Metodos de Comprobacion
         verificarNombreEmpleado = capturarExcepcion(nombreEmpleado);
 
-        if (verificarNombreEmpleado == null)
+        if (verificarNombreEmpleado != null)
         {
-            //salarioEmpleado = Nomina.calcularSalario_Empleado(verificarNombreEmpleado);
+            salarioEmpleado = Nomina.calcularSalario_Empleado(verificarNombreEmpleado, "Empleado");
+            textoNotificaciones.setText("El salario del empleado es de: " + salarioEmpleado);
         }
     }
 
     @FXML
     void calcularSalarioMonitor(ActionEvent event)
     {
+        String salarioMonitor = null;
+        String nombreMonitor = null;
+        String verificarNombreMonitor = null;
 
+        nombreMonitor = textIDMonitor.getText();
+
+        // Metodos de Comprobacion
+        verificarNombreMonitor = capturarExcepcion(nombreMonitor);
+
+        if (verificarNombreMonitor != null)
+        {
+            salarioMonitor = Nomina.calcularSalario_Empleado(verificarNombreMonitor, "Monitor");
+            textoNotificaciones.setText("El salario del monitor es de: " + salarioMonitor);
+        }
     }
 
     @FXML
     void calcularSalarioProfesor(ActionEvent event)
     {
+        String salarioProfesor = null;
+        String nombreProfesor = null;
+        String verificarNombreProfesor = null;
 
+        nombreProfesor = textIDProfesor.getText();
+
+        // Metodos de Comprobacion
+        verificarNombreProfesor = capturarExcepcion(nombreProfesor);
+
+        if (verificarNombreProfesor != null)
+        {
+            salarioProfesor = Nomina.calcularSalario_Empleado(verificarNombreProfesor, "Profesor");
+            textoNotificaciones.setText("El salario del profesor es de: " + salarioProfesor);
+        }
     }
 
     @FXML
@@ -252,6 +285,7 @@ public class ControladorInterfaz {
     {
 
     }
+
 
     public String capturarExcepcion(Object probarObjeto)
     {

@@ -155,7 +155,7 @@
             <Font name="Futura Medium" size="16.0" />
          </font>
       </Text>
-      <TextField fx:id="textIDEmpleado1" layoutX="275.0" layoutY="241.0" prefHeight="25.0" prefWidth="215.0" promptText="Introduzca el nombre del Empleado">
+      <TextField fx:id="textIDEmpleado" layoutX="275.0" layoutY="241.0" prefHeight="25.0" prefWidth="215.0" promptText="Introduzca el nombre del Empleado">
          <opaqueInsets>
             <Insets bottom="15.0" />
          </opaqueInsets>
@@ -165,7 +165,7 @@
             <Font name="Futura Medium" size="16.0" />
          </font>
       </Text>
-      <TextField fx:id="textIDEmpleado11" layoutX="276.0" layoutY="306.0" prefHeight="25.0" prefWidth="215.0" promptText="Introduzca el nombre del Profesor">
+      <TextField fx:id="textIDProfesor" layoutX="276.0" layoutY="306.0" prefHeight="25.0" prefWidth="215.0" promptText="Introduzca el nombre del Profesor">
          <opaqueInsets>
             <Insets bottom="15.0" />
          </opaqueInsets>
@@ -175,7 +175,7 @@
             <Font name="Futura Medium" size="16.0" />
          </font>
       </Text>
-      <TextField fx:id="textIDEmpleado111" layoutX="276.0" layoutY="366.0" prefHeight="25.0" prefWidth="215.0" promptText="Introduzca el nombre del Monitor">
+      <TextField fx:id="textIDMonitor" layoutX="276.0" layoutY="366.0" prefHeight="25.0" prefWidth="215.0" promptText="Introduzca el nombre del Monitor">
          <opaqueInsets>
             <Insets bottom="15.0" />
          </opaqueInsets>
