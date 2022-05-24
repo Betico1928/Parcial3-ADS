@@ -2,9 +2,8 @@
 package com.example.parcial_3ads;
 
 
+import java.io.*;
 import java.util.Scanner;
-import java.io.File;
-import java.io.FileNotFoundException;
 import java.util.ArrayList;
 
 
@@ -163,8 +162,47 @@ public class ControladorArchivosNomina
 
         return listaAsignaturas ;
     }
-    
-    
+
+    public static final void modificarNomina(String pathDelArchivo) throws IOException
+    {
+        Writer modificadorDeArchivo = new FileWriter(pathDelArchivo, false);
+        String contenidoNomina = new String();
+
+        for (Empleado empleadoAniadido : Nomina.getEmpleados_ListaCompleta())
+        {
+            if (empleadoAniadido instanceof Profesor)
+            {
+                contenidoNomina += empleadoAniadido.getNombre() + '%' + empleadoAniadido.getId() + '%' + empleadoAniadido.getCargo() + '\n' + ((Profesor) empleadoAniadido).getEscalafon() + '\n';
+
+                for (Asignatura asignaturaAniadida : ((Profesor) empleadoAniadido).getAsignaturas_ListaCompleta())
+                {
+                    contenidoNomina += asignaturaAniadida.getNombre() + ',' + asignaturaAniadida.getHoras_String() + '\n';
+                }
+                contenidoNomina += "#\n";
+            }
+
+            else if (empleadoAniadido instanceof Monitor)
+            {
+                contenidoNomina += empleadoAniadido.getNombre() + '%' + empleadoAniadido.getId() + '%' + empleadoAniadido.getCargo() + '\n';
+
+                for (Asignatura asignaturaAniadida : ((Monitor) empleadoAniadido).getAsignaturas_ListaCompleta())
+                {
+                    contenidoNomina += asignaturaAniadida.getNombre() + ',' + asignaturaAniadida.getHoras_String() + '\n';
+                }
+                contenidoNomina += "#\n";
+            }
+
+            else if (empleadoAniadido instanceof Empleado)
+            {
+                contenidoNomina += empleadoAniadido.getNombre() + '%' + empleadoAniadido.getId() + '%' + empleadoAniadido.getCargo() + '\n' + empleadoAniadido.getNumeroSalarios_String() + "\n#\n";
+            }
+        }
+        contenidoNomina += "FIN";
+        modificadorDeArchivo.write(contenidoNomina);
+        modificadorDeArchivo.flush();
+        modificadorDeArchivo.close();
+    }
+
     /*
         MÉTODOS DE INSTANCIA.
     */

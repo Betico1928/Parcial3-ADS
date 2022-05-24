@@ -193,11 +193,13 @@ public class Nomina
 
     // Métodos para calcular datos de la nómina.
 
-    public static void aniadirAsignatura_A_Empleado ( String nombre_A,double horas_A,String id_E ) {
-
-        for ( Empleado trabajador : Nomina.empleados ) {
-
-            if ( id_E.equals(trabajador.getId()) ) {
+    public static boolean aniadirAsignatura_A_Empleado ( String nombre_A,double horas_A, String tipo_E ,String id_E )
+    {
+        boolean idCorrecto = false;
+        for ( Empleado trabajador : Nomina.empleados )
+        {
+            if (tipo_E.equals(trabajador.getCargo()) && id_E.equals(trabajador.getId()) )
+            {
                 Nomina.mensajeValidador___EncontrarEmpleado(id_E.equals(trabajador.getId()),id_E) ;
 
                 if ( trabajador instanceof Profesor ) {
@@ -207,6 +209,7 @@ public class Nomina
                     boolean bandera = ( (Profesor)trabajador ).getAsignaturas_ListaCompleta().add(nuevaAsignatura) ;
                     Nomina.mensajeValidador___aniadirAsignatura_A_Empleado ( bandera , nuevaAsignatura ) ;
 
+                    idCorrecto = true;
                     break;
 
                 } else if ( trabajador instanceof Monitor ) {
@@ -216,36 +219,37 @@ public class Nomina
                     boolean bandera = ( (Monitor)trabajador ).getAsignaturas_ListaCompleta().add(nuevaAsignatura) ;
                     Nomina.mensajeValidador___aniadirAsignatura_A_Empleado ( bandera , nuevaAsignatura ) ;
 
+                    idCorrecto = true;
                     break;
 
                 } else if ( trabajador instanceof Empleado ) {
 
                     System.out.println("El empleado solicitado no tiene asignaturas a su cargo. Por lo tanto, no es posible agregar la materia solicitada.");
 
+                    idCorrecto = true;
                     break;
-
                 }
-
             }
 
         }
-
+        return idCorrecto;
     }
 
-    public String calcularSalario_Empleado ( String id ) {
-
+    public String calcularSalario_Empleado ( String nombre, String cargo )
+    {
         double resultado = 0.0d ;
 
         for ( Empleado trabajador : Nomina.empleados ) {
 
-            if ( trabajador.getId().equals(id) ) {
-                Nomina.mensajeValidador___EncontrarEmpleado(id.equals(trabajador.getId()),id) ;
+            if ( trabajador.getNombre().equals(nombre) && trabajador.getCargo().equals(cargo) )
+            {
+                Nomina.mensajeValidador___EncontrarEmpleado(trabajador.getNombre().equals(nombre) && trabajador.getCargo().equals(cargo), nombre, cargo) ;
 
                 if ( trabajador instanceof Profesor ) {
 
                     double primer_double = 0.88d ;
                     double segundo_double = Double.valueOf( ( (Profesor)trabajador ) . getNumeroSalarios_Integer() ) ;
-                    double tercer_double = calcularHorasTotales_Empleado(id) ;
+                    double tercer_double = calcularHorasTotales_Empleado(nombre, cargo) ;
 
                     resultado = primer_double * segundo_double * tercer_double ;
 
@@ -253,7 +257,7 @@ public class Nomina
 
                 } else if ( trabajador instanceof Monitor ) {
 
-                    double primer_double = calcularHorasTotales_Empleado(id) ;
+                    double primer_double = calcularHorasTotales_Empleado(nombre, cargo) ;
                     double segundo_double = ( (Monitor)trabajador ) . getValorHoraTrabajada_double() ;
 
                     resultado = primer_double * segundo_double ;
@@ -278,20 +282,19 @@ public class Nomina
         return String.format("$%,.2f",resultado) ;
     }
 
-    public double calcularHorasTotales_Empleado ( String id ) {
-
+    public double calcularHorasTotales_Empleado ( String nombre, String cargo )
+    {
         double horas = 0.0d ;
 
-        for ( Empleado trabajador : Nomina.empleados ) {
-
-            if ( trabajador.getId().equals(id) ) {
-
-                if ( trabajador instanceof Profesor ) {
-
-                    for ( Asignatura materia : ( (Profesor)trabajador ) . getAsignaturas_ListaCompleta() ) {
-
-                        horas += materia.getHoras_double() ;
-
+        for ( Empleado trabajador : Nomina.empleados )
+        {
+            if ( trabajador.getNombre().equals(nombre) && trabajador.getCargo().equals(cargo) )
+            {
+                if ( trabajador instanceof Profesor )
+                {
+                    for ( Asignatura materia : ( (Profesor)trabajador ) . getAsignaturas_ListaCompleta() )
+                    {
+                        horas += materia.getHoras_double();
                     }
 
                     break;
@@ -343,6 +346,16 @@ public class Nomina
             System.out.println ( "El empleado con el numero de identificacion " + id + " fue encontrado." ) ;
         } else {
             System.out.println ( "El empleado con el numero de identificacion " + id + " NO fue encontrado." ) ;
+        }
+
+    }
+
+    public static void mensajeValidador___EncontrarEmpleado ( boolean bandera , String nombre, String cargo)
+    {
+        if ( bandera ) {
+            System.out.println ( "El empleado con el nombre de " + nombre + " y el cargo " + cargo + " fue encontrado." ) ;
+        } else {
+            System.out.println ( "El empleado con el nombre de " + nombre + " y el cargo " + cargo + " NO fue encontrado." ) ;
         }
 
     }

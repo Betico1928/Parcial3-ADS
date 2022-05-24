@@ -121,7 +121,7 @@ public class Profesor extends Empleado {
     // Sobrescritura del método 'ToString'.
     @Override
     public String toString() {
-        return "\n\n" +
+        return "\n" +
             "Profesor " + "{\n" +
                 "\tnombre: " + super.getNombre() + ",\n" +
                 "\tid: " + super.getId() + ",\n" +
@@ -131,7 +131,7 @@ public class Profesor extends Empleado {
                 "\tescalafon: " + this.escalafon +  ",\n" +
                 "\tvalorHoraTrabajada: " + this.valorHoraTrabajada + "\n" +
             "}" +
-        "\n\n";
+        "\n";
     }
     
     

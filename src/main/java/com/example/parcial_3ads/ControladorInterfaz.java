@@ -6,6 +6,7 @@ package com.example.parcial_3ads;
 
 // Importaciones generales.
 import java.io.File;
+import java.io.IOException;
 import java.util.Objects;
 
 // Importaciones específicas para JavaFX.
@@ -20,6 +21,7 @@ import javafx.stage.FileChooser;
 
 public class ControladorInterfaz {
 
+    public static String pathDelArchivo;
 
     @FXML // fx:id="botonInscribirMateria"
     private Button botonInscribirMateria; // Value injected by FXMLLoader
@@ -76,7 +78,9 @@ public class ControladorInterfaz {
 
             ControladorArchivosNomina.leerNomina(Nomina.getEmpleados_ListaCompleta(), rutaDelArchivo);
 
-
+            // Asignarle la ruta a la variable del path del archivo nomina
+            ControladorInterfaz.pathDelArchivo = rutaDelArchivo;
+/*
             // Imprimir la nómina.
             for ( Empleado emp : Nomina.getEmpleados_ListaCompleta() )
             {
@@ -95,7 +99,7 @@ public class ControladorInterfaz {
                     System.out.println( emp.toString() );
                 }
             }
-
+ */
         } else
         {
             System.out.println("Lo sentimos, no se ha podido abrir el archivo.") ;
@@ -116,8 +120,7 @@ public class ControladorInterfaz {
     }
 
     @FXML
-    void inscribirMateria (ActionEvent event)
-    {
+    void inscribirMateria (ActionEvent event) throws IOException {
         // Variables de Recoleccion
         String tipoEmpleado = null;
         String seleccionMaterias = null;
@@ -140,7 +143,7 @@ public class ControladorInterfaz {
         verificarHoras = seleccionHoras;
 
         // Para obtener el tipo de empleado al cual se le va a incribir la materia
-        tipoEmpleado = seleccionarTipoEmpleado(event) ;
+        tipoEmpleado = seleccionarTipoEmpleado(event);
         verificarEmpleado = tipoEmpleado;
 
         //Para obtener el ID del empleado:
@@ -155,10 +158,19 @@ public class ControladorInterfaz {
 
         if (!Objects.equals(verificarMateria, "error") && !Objects.equals(verificarHoras, "error") && !Objects.equals(verificarEmpleado, "error") && !Objects.equals(verificarId, "error"))
         {
-            System.out.println("Hola 2");
+            System.out.println("------------------------------------------------------------------------------------------------------------------------");
             // Pasar toda la informacion al metodo de aniadirAsignatura_A_Empleado
-            Nomina.aniadirAsignatura_A_Empleado(seleccionMaterias ,Double.parseDouble(seleccionHoras) ,idEmpleado);
-            textoNotificaciones.setText("Se ha inscrito la materia exitosamente :D");
+            boolean idCorrecto = Nomina.aniadirAsignatura_A_Empleado(seleccionMaterias ,Double.parseDouble(seleccionHoras), tipoEmpleado ,idEmpleado);
+
+            if (idCorrecto)
+            {
+                textoNotificaciones.setText("Se ha inscrito la materia exitosamente :D");
+                ControladorArchivosNomina.modificarNomina(pathDelArchivo);
+            }
+            else
+            {
+                textoNotificaciones.setText("No se ha inscrito la materia exitosamente D:");
+            }
         }
         else
         {
@@ -167,7 +179,7 @@ public class ControladorInterfaz {
 
 
         // Imprimir la nómina.
-        for ( Empleado emp : Nomina.getEmpleados_ListaCompleta() )
+        for ( Empleado emp : Nomina.getEmpleados_ListaCompleta())
         {
             if ( emp instanceof Profesor )
             {
@@ -202,14 +214,25 @@ public class ControladorInterfaz {
             tipoEmpleado = "Monitor" ;
 
         }
-
         return tipoEmpleado;
     }
 
     @FXML
     void calcularSalarioEmpleado(ActionEvent event)
     {
+        String salarioEmpleado = null;
+        String nombreEmpleado = null;
+        String verificarNombreEmpleado = null;
 
+        nombreEmpleado = textIDEmpleado.getText();
+
+        // Metodos de Comprobacion
+        verificarNombreEmpleado = capturarExcepcion(nombreEmpleado);
+
+        if (verificarNombreEmpleado == null)
+        {
+            //salarioEmpleado = Nomina.calcularSalario_Empleado(verificarNombreEmpleado);
+        }
     }
 
     @FXML
