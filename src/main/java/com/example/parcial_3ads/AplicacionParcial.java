@@ -17,9 +17,6 @@ import java.util.ResourceBundle;
 
 public class AplicacionParcial extends Application
 {
-    @FXML
-    private Button botonSeleccionNomina;
-
 
     @Override
     public void start(Stage stage) throws IOException
