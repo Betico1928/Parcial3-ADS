@@ -1,5 +1,9 @@
 
+<<<<<<< HEAD:src/main/java/com/example/parcial_3ads/Monitor.java
 package com.example.parcial_3ads;
+=======
+package parcial_03_withfx;
+>>>>>>> JoJo:resources/Monitor.java
 
 
 import java.util.ArrayList;

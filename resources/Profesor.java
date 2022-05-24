@@ -1,5 +1,9 @@
 
+<<<<<<< HEAD:src/main/java/com/example/parcial_3ads/Profesor.java
 package com.example.parcial_3ads;
+=======
+package parcial_03_withfx;
+>>>>>>> JoJo:resources/Profesor.java
 
 
 import java.util.ArrayList;

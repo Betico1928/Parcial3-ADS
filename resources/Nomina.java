@@ -1,5 +1,9 @@
 
+<<<<<<< HEAD:src/main/java/com/example/parcial_3ads/Nomina.java
 package com.example.parcial_3ads;
+=======
+package parcial_03_withfx;
+>>>>>>> JoJo:resources/Nomina.java
 
 
 import java.util.ArrayList;
@@ -19,6 +23,7 @@ public class Nomina {
     /*
         ATRIBUTOS DE INSTANCIA.
     */
+<<<<<<< HEAD:src/main/java/com/example/parcial_3ads/Nomina.java
 
     private static ArrayList <Empleado> empleados ;
 
@@ -33,6 +38,19 @@ public class Nomina {
     }
 
 
+=======
+    
+    private static ArrayList <Empleado> empleados = new ArrayList <> () ;
+    
+    
+    /*
+        CONSTRUCTORES.
+    */
+    
+    // Constructor por defecto.
+    
+    
+>>>>>>> JoJo:resources/Nomina.java
     /*
         MÉTODOS DE ENCAPSULAMIENTO PARA ATRIBUTOS DE CLASE ...
     */

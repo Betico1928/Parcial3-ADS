@@ -1,4 +1,9 @@
+<<<<<<< HEAD:src/main/java/com/example/parcial_3ads/Empleado.java
 package com.example.parcial_3ads;
+=======
+
+package parcial_03_withfx;
+>>>>>>> JoJo:resources/Empleado.java
 
 
 // imports
